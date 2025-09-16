@@ -1,0 +1,45 @@
+{
+    ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .": {
+        "veces": 2,
+        "ultima_fecha": "2025-09-11 15:25:31",
+        "originales": [
+            ".",
+            "."
+        ]
+    },
+    "you may have heard of this in the past, but now you've heard of it.": {
+        "veces": 19,
+        "ultima_fecha": "2025-09-12 11:30:03",
+        "originales": [
+            "you"
+        ]
+    },
+    "hi, this week will be bad.": {
+        "veces": 1,
+        "ultima_fecha": "2025-09-12 14:30:33",
+        "originales": [
+            "Hi, this week will be bad"
+        ]
+    },
+    "my favorite color is red, it is nice.": {
+        "veces": 1,
+        "ultima_fecha": "2025-09-12 16:45:09",
+        "originales": [
+            "My favorite color is red, is nice"
+        ]
+    },
+    "today is friday 12th of march.": {
+        "veces": 1,
+        "ultima_fecha": "2025-09-12 16:48:11",
+        "originales": [
+            "Today is friday 12th"
+        ]
+    },
+    "today is friday, brother.": {
+        "veces": 1,
+        "ultima_fecha": "2025-09-12 16:51:00",
+        "originales": [
+            "Today is friday, brother"
+        ]
+    }
+}
