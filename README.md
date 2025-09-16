@@ -149,9 +149,7 @@ Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) par
 ##  Soporte
 
 ¿Tienes preguntas o problemas?
--  Email: tu-email@example.com
--  Issues: [GitHub Issues](https://github.com/tu-usuario/ai-english-assistant/issues)
--  Discusiones: [GitHub Discussions](https://github.com/tu-usuario/ai-english-assistant/discussions)
+-  Email: fabiocano17@hotmail.com
 
 ##  Agradecimientos
 
