@@ -41,5 +41,26 @@
         "originales": [
             "Today is friday, brother"
         ]
+    },
+    "i m sorry i don t understand.": {
+        "veces": 1,
+        "ultima_fecha": "2025-09-17 15:28:05",
+        "originales": [
+            "I´m sorry i don´t understand"
+        ]
+    },
+    "on the beach, drinking a beer.": {
+        "veces": 1,
+        "ultima_fecha": "2025-09-17 16:29:47",
+        "originales": [
+            "In the beach, drinking a beer"
+        ]
+    },
+    "my hobbies are learning english and enjoy practicing and talking.": {
+        "veces": 1,
+        "ultima_fecha": "2025-09-17 16:41:39",
+        "originales": [
+            "My hobbies is learning english and enjoy practice and talk"
+        ]
     }
 }
