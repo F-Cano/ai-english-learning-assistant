@@ -3,28 +3,18 @@ import logging
 from pathlib import Path
 from src.config.settings import Settings
 from src.assistant.ai_assistant import AIAssistant
+from src.utils.logging_config import setup_logging
+from src.utils.error_handler import graceful_shutdown
 
-def setup_logging(settings: Settings):
-    """Configura el sistema de logging"""
-    log_file = settings.paths.logs_dir / "assistant.log"
-    
-    logging.basicConfig(
-        level=logging.INFO,
-        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-        handlers=[
-            logging.FileHandler(log_file, encoding='utf-8'),
-            logging.StreamHandler()
-        ]
-    )
-
+@graceful_shutdown
 def main():
-    """Función principal"""
+    """Función principal mejorada con mejor manejo de errores"""
     try:
         # Configurar settings
         settings = Settings()
         settings.validate()
         
-        # Configurar logging
+        # Configurar logging centralizado
         setup_logging(settings)
         logger = logging.getLogger(__name__)
         
@@ -32,6 +22,10 @@ def main():
         os.chdir(settings.paths.working_dir)
         
         print("🚀 Iniciando Asistente de IA para práctica de inglés...")
+        print(f"📂 Directorio de trabajo: {settings.paths.working_dir}")
+        print(f"📋 Archivo de errores: {settings.paths.errors_file}")
+        print(f"📝 Logs en: {settings.paths.logs_dir}")
+        
         logger.info("Starting AI Assistant application")
         
         # Crear e inicializar el asistente
@@ -42,10 +36,12 @@ def main():
         
     except KeyboardInterrupt:
         print("\n\n⚠ Aplicación interrumpida por el usuario")
-        logger.info("Application interrupted by user")
+        if 'logger' in locals():
+            logger.info("Application interrupted by user")
     except Exception as e:
         print(f"❌ Error crítico: {e}")
-        logger.critical(f"Critical error: {e}")
+        if 'logger' in locals():
+            logger.critical(f"Critical error: {e}")
         raise
 
 if __name__ == "__main__":

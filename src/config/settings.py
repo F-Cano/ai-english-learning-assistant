@@ -20,7 +20,7 @@ class ModelConfig:
 
 @dataclass
 class PathConfig:
-    working_dir: Path = Path(r"D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA")
+    working_dir: Path = Path.cwd()  # Use current working directory instead of hardcoded Windows path
     errors_file: str = "errores_memoria.json"
     logs_dir: Path = Path("logs")
     models_cache_dir: Optional[Path] = None

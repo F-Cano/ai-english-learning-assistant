@@ -6,6 +6,7 @@ from ..services.translation_service import TranslationService
 from ..services.grammar_service import GrammarService
 from ..services.chat_service import ChatService
 from ..config.settings import Settings
+from ..utils.error_handler import ErrorHandler
 
 logger = logging.getLogger(__name__)
 
