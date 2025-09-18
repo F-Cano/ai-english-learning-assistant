@@ -1,0 +1,34 @@
+{
+  "session_id": "smart_chat_1758233555",
+  "progress": {
+    "session_id": "smart_chat_1758233555",
+    "total_messages": 1,
+    "grammar_errors": 1,
+    "vocabulary_level": "A2",
+    "fluency_score": 0.0,
+    "topics_discussed": [],
+    "improvement_areas": [],
+    "strengths": [],
+    "session_start": "2025-09-18T17:12:35.916821",
+    "last_activity": "2025-09-18T17:12:53.563539"
+  },
+  "conversation_history": [
+    {
+      "timestamp": "2025-09-18T17:12:53.563548",
+      "user_input": "De futbol",
+      "comprehension_level": "A2",
+      "error_count": 1,
+      "topic": null,
+      "emotional_state": "neutral",
+      "fluency_score": 0.52
+    }
+  ],
+  "timestamp": "2025-09-18T17:12:53.564837",
+  "summary": {
+    "total_messages": 1,
+    "current_level": "A2",
+    "fluency_score": 0.0,
+    "topics_count": 0,
+    "error_count": 1
+  }
+}

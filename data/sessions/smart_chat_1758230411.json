@@ -1,0 +1,43 @@
+{
+  "session_id": "smart_chat_1758230411",
+  "progress": {
+    "session_id": "smart_chat_1758230411",
+    "total_messages": 2,
+    "grammar_errors": 2,
+    "vocabulary_level": "A2",
+    "fluency_score": 0.0,
+    "topics_discussed": [],
+    "improvement_areas": [],
+    "strengths": [],
+    "session_start": "2025-09-18T16:20:11.176460",
+    "last_activity": "2025-09-18T16:22:14.646578"
+  },
+  "conversation_history": [
+    {
+      "timestamp": "2025-09-18T16:21:47.204548",
+      "user_input": "De comida",
+      "comprehension_level": "A2",
+      "error_count": 1,
+      "topic": null,
+      "emotional_state": "neutral",
+      "fluency_score": 0.52
+    },
+    {
+      "timestamp": "2025-09-18T16:22:14.646606",
+      "user_input": "Me gustaria hablar de comida",
+      "comprehension_level": "A2",
+      "error_count": 1,
+      "topic": null,
+      "emotional_state": "neutral",
+      "fluency_score": 0.52
+    }
+  ],
+  "timestamp": "2025-09-18T16:24:38.916246",
+  "summary": {
+    "total_messages": 2,
+    "current_level": "A2",
+    "fluency_score": 0.0,
+    "topics_count": 0,
+    "error_count": 2
+  }
+}
