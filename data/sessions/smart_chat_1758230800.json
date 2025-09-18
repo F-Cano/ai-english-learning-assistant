@@ -1,0 +1,54 @@
+{
+  "session_id": "smart_chat_1758230800",
+  "progress": {
+    "session_id": "smart_chat_1758230800",
+    "total_messages": 6,
+    "grammar_errors": 6,
+    "vocabulary_level": "A2",
+    "fluency_score": 0.34163999999999994,
+    "topics_discussed": [],
+    "improvement_areas": [],
+    "strengths": [
+      "grammar_accuracy: good"
+    ],
+    "session_start": "2025-09-18T16:26:40.314586",
+    "last_activity": "2025-09-18T16:30:02.491893"
+  },
+  "conversation_history": [
+    {
+      "timestamp": "2025-09-18T16:26:55.673429",
+      "user_input": "Do futbol",
+      "comprehension_level": "A2",
+      "error_count": 1,
+      "topic": null,
+      "emotional_state": "neutral",
+      "fluency_score": 0.52
+    },
+    {
+      "timestamp": "2025-09-18T16:29:08.367755",
+      "user_input": "Soccer is very nice",
+      "comprehension_level": "A2",
+      "error_count": 1,
+      "topic": null,
+      "emotional_state": "neutral",
+      "fluency_score": 0.52
+    },
+    {
+      "timestamp": "2025-09-18T16:30:01.055615",
+      "user_input": "I'm practice english with you, is interesting",
+      "comprehension_level": "A2",
+      "error_count": 1,
+      "topic": null,
+      "emotional_state": "neutral",
+      "fluency_score": 0.52
+    }
+  ],
+  "timestamp": "2025-09-18T17:12:16.920155",
+  "summary": {
+    "total_messages": 6,
+    "current_level": "A2",
+    "fluency_score": 0.34163999999999994,
+    "topics_count": 0,
+    "error_count": 6
+  }
+}

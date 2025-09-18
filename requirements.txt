@@ -1,34 +1,21 @@
-﻿# Core dependencies
-torch>=1.11.0
-transformers>=4.20.0
-numpy>=1.21.0
-scipy>=1.9.0
+﻿# Dependencias de IA y ML
+transformers>=4.30.0
+torch>=2.0.0
+torchaudio>=2.0.0
 
-# Audio processing
-sounddevice>=0.4.0
-pyaudio>=0.2.11
+# Dependencias de audio
 speechrecognition>=3.10.0
 pyttsx3>=2.90
+pyaudio>=0.2.11
 
-# OpenAI Whisper
-openai-whisper>=20230918
+# Dependencias de traducción
+googletrans==4.0.0rc1
 
-# Text processing
-sentencepiece>=0.1.99
-sacremoses>=0.0.53
-protobuf>=3.20.0
+# Dependencias generales
+numpy>=1.24.0
+requests>=2.31.0
+pathlib2>=2.3.7
 
-# TTS
-gtts>=2.2.0
-
-# Optional: OpenAI API
-openai>=1.0.0
-
-# Optional: Enhanced models
-sentence-transformers>=2.2.0
-spacy>=3.4.0
-
-# Development
-pytest>=7.0.0
-black>=22.0.0
-flake8>=5.0.0
+# Para desarrollo
+pytest>=7.4.0
+black>=23.0.0

@@ -1,0 +1,71 @@
+{
+  "version": "1.0",
+  "created": "2025-09-18T16:10:59.456840",
+  "last_updated": "2025-09-18T17:12:35.917070",
+  "user_stats": {
+    "total_sessions": 4,
+    "total_messages": 0,
+    "total_practice_time": 0,
+    "streak_days": 1
+  },
+  "learning_progress": {
+    "current_level": "A2",
+    "average_level": "A2",
+    "fluency_score": 0.5,
+    "grammar_accuracy": 0.6,
+    "vocabulary_strength": 0.5
+  },
+  "skill_areas": {
+    "strong_areas": [
+      "enthusiasm",
+      "participation"
+    ],
+    "improvement_areas": [
+      "grammar",
+      "vocabulary",
+      "fluency"
+    ],
+    "focus_areas": [
+      "basic_conversation",
+      "common_phrases"
+    ]
+  },
+  "learning_preferences": {
+    "preferred_topics": [
+      "general_conversation",
+      "daily_life"
+    ],
+    "learning_style": "interactive",
+    "difficulty_preference": "gradual",
+    "feedback_style": "encouraging"
+  },
+  "conversation_history": {
+    "favorite_topics": [],
+    "challenging_topics": [],
+    "recent_topics": []
+  },
+  "goals": {
+    "short_term": [
+      "improve daily conversation",
+      "reduce grammar errors"
+    ],
+    "long_term": [
+      "achieve fluency",
+      "confident communication"
+    ],
+    "current_focus": "basic communication skills"
+  },
+  "achievements": {
+    "milestones_reached": [],
+    "consecutive_days": 0,
+    "best_fluency_score": 0.5,
+    "topics_mastered": []
+  },
+  "last_session_date": "2025-09-18",
+  "total_messages": 3,
+  "average_level": "A2",
+  "last_session": "2025-09-18T16:30:02.491910",
+  "strong_areas": [
+    "grammar_accuracy"
+  ]
+}
