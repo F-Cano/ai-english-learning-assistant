@@ -1,12 +1,12 @@
 {
   "version": "1.0",
   "created": "2025-09-18T16:10:59.456840",
-  "last_updated": "2025-09-18T17:12:35.917070",
+  "last_updated": "2025-09-19T14:13:17.550100",
   "user_stats": {
-    "total_sessions": 4,
+    "total_sessions": 5,
     "total_messages": 0,
     "total_practice_time": 0,
-    "streak_days": 1
+    "streak_days": 2
   },
   "learning_progress": {
     "current_level": "A2",
@@ -61,10 +61,10 @@
     "best_fluency_score": 0.5,
     "topics_mastered": []
   },
-  "last_session_date": "2025-09-18",
-  "total_messages": 3,
+  "last_session_date": "2025-09-19",
+  "total_messages": 6,
   "average_level": "A2",
-  "last_session": "2025-09-18T16:30:02.491910",
+  "last_session": "2025-09-19T14:15:44.421853",
   "strong_areas": [
     "grammar_accuracy"
   ]
