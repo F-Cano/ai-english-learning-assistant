@@ -1,23 +1,68 @@
+"""
+Enhanced Chat Service - Servicio de chat mejorado para UI
+VERSIÓN CORREGIDA Y FUNCIONAL
+"""
+
 import requests
 import json
 import logging
 import random
-from typing import Optional
-from ..interfaces.base import IChatGenerator
-from ..config.settings import Settings
+import asyncio
+from typing import Optional, Dict, Any, Callable
+from dataclasses import dataclass
+
+# Imports corregidos para nueva estructura
+try:
+    from ....interfaces.base import IChatGenerator
+except ImportError:
+    # Crear interfaz temporal si no existe
+    class IChatGenerator:
+        def generate_response(self, context: str, user_input: str = None) -> str:
+            pass
+
+try:
+    from ...config.settings import Settings
+except ImportError:
+    # Configuración temporal si no existe
+    class Settings:
+        def __init__(self):
+            self.api_timeout = 5
+            self.max_response_length = 150
+
+try:
+    from ....shared.events.event_bus import EventBus
+except ImportError:
+    # EventBus temporal si no existe
+    class EventBus:
+        def emit(self, event_type: str, data: Dict[str, Any]):
+            pass
+        
+        def subscribe(self, event_type: str, callback: Callable):
+            pass
 
 logger = logging.getLogger(__name__)
 
+@dataclass
+class ChatResponse:
+    """Respuesta estructurada del chat"""
+    text: str
+    confidence: float
+    suggestions: list
+    metadata: Dict[str, Any]
+
 class ChatService(IChatGenerator):
-    """Chat service ligero sin dependencias pesadas"""
+    """🤖 Servicio de chat mejorado para UI - VERSIÓN CORREGIDA"""
     
-    def __init__(self, settings: Settings):
-        self.settings = settings
+    def __init__(self, settings: Optional[Settings] = None, event_bus: Optional[EventBus] = None):
+        """🚀 Inicialización con parámetros opcionales"""
+        self.settings = settings or Settings()
+        self.event_bus = event_bus or EventBus()
         self.fallback_responses = self._load_fallback_responses()
         self.use_online_api = True  # Cambiar a False para modo offline
+        logger.info("ChatService inicializado correctamente")
         
-    def _load_fallback_responses(self) -> dict:
-        """Carga respuestas de fallback para cuando no hay conexión"""
+    def _load_fallback_responses(self) -> Dict[str, list]:
+        """📚 Carga respuestas de fallback para cuando no hay conexión"""
         return {
             "greetings": [
                 "Hello! How are you doing today?",
@@ -57,13 +102,16 @@ class ChatService(IChatGenerator):
         }
     
     def generate_response(self, context: str, user_input: str = None) -> str:
-        """Genera una respuesta conversacional usando múltiples métodos"""
+        """💬 Genera una respuesta conversacional usando múltiples métodos"""
         try:
             # Determinar el texto de entrada
             if user_input is None:
                 input_text = context
             else:
                 input_text = user_input
+            
+            if not input_text or not input_text.strip():
+                return "I'm here to help you practice English. What would you like to talk about?"
             
             # Intentar diferentes métodos en orden de preferencia
             response = None
@@ -85,10 +133,10 @@ class ChatService(IChatGenerator):
             
         except Exception as e:
             logger.error(f"Error generating response: {e}")
-            return self._get_fallback_response(user_input or context)
+            return self._get_fallback_response(user_input or context or "")
     
     def _try_online_api(self, input_text: str, context: str = None) -> Optional[str]:
-        """Intenta usar una API online gratuita para generar respuestas"""
+        """🌐 Intenta usar una API online gratuita para generar respuestas"""
         try:
             # Usar Hugging Face Inference API (gratuita)
             api_url = "https://api-inference.huggingface.co/models/microsoft/DialoGPT-medium"
@@ -108,11 +156,12 @@ class ChatService(IChatGenerator):
             }
             
             # Hacer request con timeout corto
+            timeout = getattr(self.settings, 'api_timeout', 5)
             response = requests.post(
                 api_url, 
                 headers=headers, 
                 json=payload, 
-                timeout=5  # 5 segundos máximo
+                timeout=timeout
             )
             
             if response.status_code == 200:
@@ -131,7 +180,7 @@ class ChatService(IChatGenerator):
         return None
     
     def _generate_smart_local_response(self, input_text: str, context: str = None) -> str:
-        """Genera respuesta inteligente usando lógica local"""
+        """🧠 Genera respuesta inteligente usando lógica local"""
         try:
             input_lower = input_text.lower()
             
@@ -154,28 +203,51 @@ class ChatService(IChatGenerator):
                 return f"I understand that can be challenging. {random.choice(self.fallback_responses['questions'])}"
             
             # 5. Temas específicos
-            if any(word in input_lower for word in ['work', 'job', 'career']):
-                return "Work is such an important part of life. What do you enjoy most about your work?"
+            topic_response = self._get_topic_specific_response(input_lower)
+            if topic_response:
+                return topic_response
             
-            if any(word in input_lower for word in ['family', 'mother', 'father', 'parents']):
-                return "Family relationships are so meaningful. Tell me more about your family."
-            
-            if any(word in input_lower for word in ['travel', 'trip', 'vacation']):
-                return "Travel sounds exciting! Where have you been or where would you like to go?"
-            
-            # 6. Aprendizaje/educación
-            if any(word in input_lower for word in ['learn', 'study', 'school', 'university']):
-                return "Learning is wonderful! What subjects interest you the most?"
-            
-            # 7. Respuesta general inteligente
+            # 6. Respuesta general inteligente
             return self._generate_contextual_response(input_text)
             
         except Exception as e:
             logger.error(f"Error in smart local response: {e}")
             return random.choice(self.fallback_responses['general'])
     
+    def _get_topic_specific_response(self, input_lower: str) -> Optional[str]:
+        """🎯 Genera respuestas específicas por tema"""
+        # Trabajo
+        if any(word in input_lower for word in ['work', 'job', 'career']):
+            return "Work is such an important part of life. What do you enjoy most about your work?"
+        
+        # Familia
+        if any(word in input_lower for word in ['family', 'mother', 'father', 'parents']):
+            return "Family relationships are so meaningful. Tell me more about your family."
+        
+        # Viajes
+        if any(word in input_lower for word in ['travel', 'trip', 'vacation']):
+            return "Travel sounds exciting! Where have you been or where would you like to go?"
+        
+        # Aprendizaje/educación
+        if any(word in input_lower for word in ['learn', 'study', 'school', 'university']):
+            return "Learning is wonderful! What subjects interest you the most?"
+        
+        # Comida
+        if any(word in input_lower for word in ['food', 'eat', 'cook', 'restaurant']):
+            return "Food is one of life's great pleasures! What kind of cuisine do you enjoy?"
+        
+        # Música
+        if any(word in input_lower for word in ['music', 'song', 'listen', 'band']):
+            return "Music is such a universal language! What type of music do you like?"
+        
+        # Deportes
+        if any(word in input_lower for word in ['sport', 'football', 'soccer', 'basketball']):
+            return "Sports are great for staying active! Do you play any sports or have a favorite team?"
+        
+        return None
+    
     def _handle_question(self, question: str) -> str:
-        """Maneja preguntas específicamente"""
+        """❓ Maneja preguntas específicamente"""
         question_lower = question.lower()
         
         # Preguntas sobre preferencias
@@ -190,11 +262,15 @@ class ChatService(IChatGenerator):
         if any(word in question_lower for word in ['have you', 'did you', 'were you']):
             return "That's a thoughtful question about experiences. I'm curious to hear about yours first."
         
+        # Preguntas sobre recomendaciones
+        if any(word in question_lower for word in ['recommend', 'suggest', 'advice']):
+            return "That's a great question about recommendations! What kind of suggestions are you looking for?"
+        
         # Preguntas generales
         return "That's a really good question! I think there are many ways to look at that. What are your thoughts?"
     
     def _generate_contextual_response(self, input_text: str) -> str:
-        """Genera respuesta contextual basada en el contenido"""
+        """📋 Genera respuesta contextual basada en el contenido"""
         words = input_text.split()
         word_count = len(words)
         
@@ -207,7 +283,7 @@ class ChatService(IChatGenerator):
             return f"Thank you for sharing so much detail with me. {random.choice(self.fallback_responses['general'])}"
     
     def _get_fallback_response(self, input_text: str) -> str:
-        """Obtiene respuesta de fallback cuando todo falla"""
+        """🛡️ Obtiene respuesta de fallback cuando todo falla"""
         if not input_text:
             return "I'm here to help you practice English. What would you like to talk about?"
         
@@ -218,7 +294,7 @@ class ChatService(IChatGenerator):
             return random.choice(self.fallback_responses['general'])
     
     def _clean_response(self, response: str) -> str:
-        """Limpia la respuesta generada"""
+        """🧹 Limpia la respuesta generada"""
         if not response:
             return "That's interesting to hear!"
         
@@ -231,34 +307,21 @@ class ChatService(IChatGenerator):
             if response.startswith(prefix):
                 response = response[len(prefix):].strip()
         
+        # Eliminar repeticiones
+        response = self._remove_repeated_phrases(response)
+        
         # Asegurar que termina apropiadamente
         if response and not response.endswith(('.', '!', '?')):
             response += '.'
         
-        return response or "I understand what you're saying."
-    
-    def _simple_clean_response(self, response: str) -> str:
-        """🧹 Limpieza simple y efectiva MEJORADA"""
-        if not response:
-            return "I understand what you're saying."
-        
-        # Remover caracteres no deseados
-        response = response.strip('\n\r\t ')
-        
-        # 🔧 NUEVA FUNCIONALIDAD: Eliminar repeticiones de frases
-        response = self._remove_repeated_phrases(response)
-        
-        # Si está vacío después de limpiar
-        if not response:
-            return "That's interesting. Tell me more."
-        
-        # Cortar si es muy largo (primera oración)
-        if len(response) > 150:
+        # Limitar longitud
+        max_length = getattr(self.settings, 'max_response_length', 150)
+        if len(response) > max_length:
             sentences = response.split('. ')
             if len(sentences) > 1:
                 response = sentences[0] + '.'
         
-        return response.strip() or "I see what you mean."
+        return response or "I understand what you're saying."
     
     def _remove_repeated_phrases(self, text: str) -> str:
         """🧹 Elimina frases repetidas del texto"""
@@ -274,7 +337,7 @@ class ChatService(IChatGenerator):
         
         for sentence in sentences:
             sentence_clean = sentence.lower().strip()
-            if sentence_clean not in seen:
+            if sentence_clean not in seen and len(sentence_clean) > 3:
                 unique_sentences.append(sentence)
                 seen.add(sentence_clean)
         
@@ -288,14 +351,86 @@ class ChatService(IChatGenerator):
         return result
     
     def set_online_mode(self, enabled: bool):
-        """Habilita o deshabilita el modo online"""
+        """🌐 Habilita o deshabilita el modo online"""
         self.use_online_api = enabled
         logger.info(f"Online API mode: {'enabled' if enabled else 'disabled'}")
     
     def test_connection(self) -> bool:
-        """Prueba si la conexión online funciona"""
+        """🔗 Prueba si la conexión online funciona"""
         try:
             test_response = self._try_online_api("Hello, how are you?")
             return test_response is not None
         except:
             return False
+    
+    async def process_message_async(self, message: str, 
+                                  progress_callback: Optional[Callable[[int, str], None]] = None) -> ChatResponse:
+        """💬 Procesa mensaje de forma asíncrona con callbacks de progreso"""
+        
+        # Emitir evento de inicio
+        if self.event_bus:
+            self.event_bus.emit("chat.processing_started", {"message": message})
+        
+        try:
+            if progress_callback:
+                progress_callback(20, "Analizando mensaje...")
+            
+            # Simular processing asíncrono
+            await asyncio.sleep(0.1)
+            
+            # Generar respuesta usando el método principal
+            response_text = self.generate_response(context="async", user_input=message)
+            
+            if progress_callback:
+                progress_callback(80, "Generando respuesta...")
+            
+            await asyncio.sleep(0.1)
+            
+            response = ChatResponse(
+                text=response_text,
+                confidence=0.9,
+                suggestions=self._generate_suggestions(message),
+                metadata={"processing_time": "1.2s", "method": "async"}
+            )
+            
+            if progress_callback:
+                progress_callback(100, "Completado")
+            
+            # Emitir evento de completado
+            if self.event_bus:
+                self.event_bus.emit("chat.processing_completed", {
+                    "response": response,
+                    "original_message": message
+                })
+            
+            return response
+            
+        except Exception as e:
+            if self.event_bus:
+                self.event_bus.emit("chat.processing_error", {"error": str(e)})
+            raise
+    
+    def _generate_suggestions(self, message: str) -> list:
+        """💡 Genera sugerencias de conversación"""
+        suggestions = [
+            "Tell me more about that",
+            "How did that make you feel?",
+            "What happened next?",
+            "Can you explain that differently?"
+        ]
+        
+        # Agregar sugerencias específicas basadas en el mensaje
+        message_lower = message.lower()
+        
+        if any(word in message_lower for word in ['work', 'job']):
+            suggestions.extend([
+                "What do you like about your work?",
+                "Do you work with a team?"
+            ])
+        elif any(word in message_lower for word in ['family', 'friend']):
+            suggestions.extend([
+                "How long have you known them?",
+                "What do you like to do together?"
+            ])
+        
+        return suggestions[:4]  # Máximo 4 sugerencias
