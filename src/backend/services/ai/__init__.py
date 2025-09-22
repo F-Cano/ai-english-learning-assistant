@@ -1,9 +1,4 @@
-﻿"""
-AI Services - Servicios de inteligencia artificial
-"""
+from .ollama_service import OllamaService
+from .chat_service import ChatService
 
-try:
-    from .chat_service import ChatService
-    __all__ = ['ChatService']
-except ImportError:
-    __all__ = []
+__all__ = ['OllamaService', 'ChatService']
