@@ -1,162 +1,401 @@
+"""
+IA English Assistant - Version final con Ollama
+"""
+import sys
 import os
-import logging
-from pathlib import Path
-from src.config.settings import Settings
-from src.assistant.ai_assistant import AIAssistant
+sys.path.append('src')
 
-def setup_logging(settings: Settings):
-    """Configura el sistema de logging"""
-    log_file = settings.paths.logs_dir / "assistant.log"
+import tkinter as tk
+from tkinter import ttk, scrolledtext, messagebox
+import threading
+from datetime import datetime
+import webbrowser
+
+from src.backend.services.ai.chat_service import ChatService
+from src.config.settings import settings
+
+class EnglishAssistantApp:
+    """Aplicacion final - Solo Ollama + UI moderna"""
     
-    logging.basicConfig(
-        level=logging.INFO,
-        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-        handlers=[
-            logging.FileHandler(log_file, encoding='utf-8'),
-            logging.StreamHandler()
-        ]
-    )
-
-def show_menu():
-    """Muestra el menú principal del asistente"""
-    print("\n" + "="*60)
-    print("🤖 ASISTENTE DE INGLÉS CON INTELIGENCIA ARTIFICIAL")
-    print("="*60)
-    print("Selecciona una opción:")
-    print()
-    print("1. 📚 Práctica de Vocabulario")
-    print("2. 🎤 Práctica de Pronunciación") 
-    print("3. 📖 Lectura de Texto")
-    print("4. 🎮 Modo Interactivo Híbrido")
-    print("5. 🧠 Chat Inteligente (IA Avanzada)")
-    print("6. 📊 Ver Estadísticas")
-    print("7. ⚙️ Configuración")
-    print("8. ❌ Salir")
-    print()
-
-def show_basic_statistics():
-    """Muestra estadísticas básicas"""
-    print("\n📊 ESTADÍSTICAS BÁSICAS:")
-    print("="*40)
-    print("📝 Función de estadísticas en desarrollo")
-    print("💡 Por ahora, usa los modos de práctica para generar datos")
-    print("🔜 Próximamente: estadísticas detalladas de progreso")
-
-def show_basic_configuration():
-    """Muestra configuración básica"""
-    print("\n⚙️ CONFIGURACIÓN BÁSICA:")
-    print("="*40)
-    print("📝 Panel de configuración en desarrollo")
-    print("💡 Las configuraciones se manejan automáticamente")
-    print("🔜 Próximamente: configuración personalizada de modelos")
-
-def main():
-    """Función principal del programa"""
-    assistant = None
-    
-    try:
-        # Configurar settings
-        settings = Settings()
-        settings.validate()
+    def __init__(self):
+        self.setup_window()
+        self.setup_styles()
+        self.create_interface()
+        self.setup_chat_service()
+        self.show_welcome()
         
-        # Configurar logging
-        setup_logging(settings)
-        logger = logging.getLogger(__name__)
+    def setup_window(self):
+        """Configurar ventana principal"""
+        self.root = tk.Tk()
+        self.root.title(settings.app_title)
+        self.root.geometry(f"{settings.window_width}x{settings.window_height}")
+        self.root.configure(bg='#1a1a1a')
         
-        # Cambiar al directorio de trabajo
-        os.chdir(settings.paths.working_dir)
+        # Centrar ventana
+        self.center_window()
         
-        print("🚀 Iniciando Asistente de IA para práctica de inglés...")
-        logger.info("Starting AI Assistant application")
+        # Configurar cierre
+        self.root.protocol("WM_DELETE_WINDOW", self.on_closing)
         
-        # Crear e inicializar el asistente
-        assistant = AIAssistant(settings)
+    def center_window(self):
+        """Centrar ventana en pantalla"""
+        self.root.update_idletasks()
+        x = (self.root.winfo_screenwidth() // 2) - (settings.window_width // 2)
+        y = (self.root.winfo_screenheight() // 2) - (settings.window_height // 2)
+        self.root.geometry(f'{settings.window_width}x{settings.window_height}+{x}+{y}')
         
-        while True:
-            show_menu()
-            choice = input("▶️  Tu elección: ").strip()
+    def setup_styles(self):
+        """Configurar estilos modernos"""
+        # Colores del tema oscuro
+        self.colors = {
+            'bg': '#1a1a1a',
+            'surface': '#2a2a2a', 
+            'primary': '#0066cc',
+            'success': '#00cc66',
+            'warning': '#ffaa00',
+            'error': '#ff4444',
+            'text': '#ffffff',
+            'text_secondary': '#cccccc',
+            'text_muted': '#888888'
+        }
+        
+    def create_interface(self):
+        """Crear interfaz principal"""
+        # Frame principal
+        main_frame = tk.Frame(self.root, bg=self.colors['bg'])
+        main_frame.pack(fill='both', expand=True, padx=20, pady=20)
+        
+        # Header
+        self.create_header(main_frame)
+        
+        # Chat area
+        self.create_chat_area(main_frame)
+        
+        # Input area
+        self.create_input_area(main_frame)
+        
+        # Footer
+        self.create_footer(main_frame)
+        
+    def create_header(self, parent):
+        """Crear header con titulo y estado"""
+        header_frame = tk.Frame(parent, bg=self.colors['bg'])
+        header_frame.pack(fill='x', pady=(0, 20))
+        
+        # Titulo principal
+        title_label = tk.Label(
+            header_frame,
+            text="IA English Assistant",
+            font=('Arial', 18, 'bold'),
+            bg=self.colors['bg'],
+            fg=self.colors['text']
+        )
+        title_label.pack(side='left')
+        
+        # Estado de Ollama
+        self.status_frame = tk.Frame(header_frame, bg=self.colors['surface'])
+        self.status_frame.pack(side='right', padx=10, pady=5)
+        
+        self.status_label = tk.Label(
+            self.status_frame,
+            text="Connecting...",
+            font=('Arial', 10),
+            bg=self.colors['surface'],
+            fg=self.colors['text_secondary'],
+            padx=15,
+            pady=8
+        )
+        self.status_label.pack()
+        
+    def create_chat_area(self, parent):
+        """Crear area de chat"""
+        chat_frame = tk.Frame(parent, bg=self.colors['bg'])
+        chat_frame.pack(fill='both', expand=True, pady=(0, 20))
+        
+        # ScrolledText para mensajes
+        self.chat_display = scrolledtext.ScrolledText(
+            chat_frame,
+            bg=self.colors['surface'],
+            fg=self.colors['text'],
+            font=('Arial', 11),
+            wrap=tk.WORD,
+            padx=15,
+            pady=15,
+            insertbackground=self.colors['primary'],
+            selectbackground=self.colors['primary'],
+            selectforeground='white',
+            state='disabled'
+        )
+        self.chat_display.pack(fill='both', expand=True)
+        
+        # Configurar tags para colores
+        self.setup_chat_tags()
+        
+    def setup_chat_tags(self):
+        """Configurar tags para colores en el chat"""
+        self.chat_display.tag_configure('user', 
+                                       foreground=self.colors['primary'],
+                                       font=('Arial', 11, 'bold'))
+        self.chat_display.tag_configure('assistant',
+                                       foreground=self.colors['success'], 
+                                       font=('Arial', 11, 'bold'))
+        self.chat_display.tag_configure('system',
+                                       foreground=self.colors['warning'],
+                                       font=('Arial', 10, 'italic'))
+        self.chat_display.tag_configure('error',
+                                       foreground=self.colors['error'],
+                                       font=('Arial', 10))
+        self.chat_display.tag_configure('timestamp',
+                                       foreground=self.colors['text_muted'],
+                                       font=('Arial', 9))
+        
+    def create_input_area(self, parent):
+        """Crear area de input"""
+        input_frame = tk.Frame(parent, bg=self.colors['bg'])
+        input_frame.pack(fill='x', pady=(0, 10))
+        
+        # Frame interno
+        inner_frame = tk.Frame(input_frame, bg=self.colors['surface'])
+        inner_frame.pack(fill='x', padx=0, pady=0)
+        
+        # Input de texto
+        self.message_input = tk.Text(
+            inner_frame,
+            height=3,
+            bg=self.colors['surface'],
+            fg=self.colors['text'],
+            font=('Arial', 11),
+            wrap=tk.WORD,
+            padx=15,
+            pady=10,
+            insertbackground=self.colors['primary'],
+            selectbackground=self.colors['primary'],
+            selectforeground='white'
+        )
+        self.message_input.pack(side='left', fill='both', expand=True)
+        
+        # Frame de botones
+        button_frame = tk.Frame(inner_frame, bg=self.colors['surface'])
+        button_frame.pack(side='right', fill='y', padx=(10, 15), pady=10)
+        
+        # Boton enviar
+        self.send_button = tk.Button(
+            button_frame,
+            text="Send",
+            bg=self.colors['primary'],
+            fg='white',
+            font=('Arial', 10, 'bold'),
+            command=self.send_message,
+            cursor='hand2',
+            width=8,
+            height=2
+        )
+        self.send_button.pack(pady=(0, 5))
+        
+        # Boton traducir
+        self.translate_button = tk.Button(
+            button_frame,
+            text="Translate",
+            bg=self.colors['warning'],
+            fg='white',
+            font=('Arial', 9, 'bold'),
+            command=self.translate_last,
+            cursor='hand2',
+            width=8,
+            height=2
+        )
+        self.translate_button.pack()
+        
+        # Bind eventos
+        self.message_input.bind('<Control-Return>', lambda e: self.send_message())
+        self.message_input.bind('<KeyRelease>', self.on_text_change)
+        
+    def create_footer(self, parent):
+        """Crear footer con informacion"""
+        footer_frame = tk.Frame(parent, bg=self.colors['bg'])
+        footer_frame.pack(fill='x')
+        
+        # Informacion
+        info_label = tk.Label(
+            footer_frame,
+            text="Tip: Press Ctrl+Enter to send | Powered by Ollama",
+            font=('Arial', 9),
+            bg=self.colors['bg'],
+            fg=self.colors['text_muted']
+        )
+        info_label.pack(side='left')
+        
+        # Enlace a Ollama
+        ollama_link = tk.Label(
+            footer_frame,
+            text="Get Ollama",
+            font=('Arial', 9, 'underline'),
+            bg=self.colors['bg'],
+            fg=self.colors['primary'],
+            cursor='hand2'
+        )
+        ollama_link.pack(side='right')
+        ollama_link.bind('<Button-1>', lambda e: webbrowser.open('https://ollama.ai'))
+        
+    def setup_chat_service(self):
+        """Configurar servicio de chat"""
+        try:
+            self.chat_service = ChatService()
+            self.last_assistant_message = ""
             
-            if choice == "1":
-                try:
-                    # 🔧 USAR MÉTODO EXISTENTE
-                    assistant.practice_vocabulary()
-                except Exception as e:
-                    print(f"❌ Error en modo vocabulario: {e}")
-                    
-            elif choice == "2":
-                try:
-                    # 🔧 USAR MÉTODO EXISTENTE
-                    assistant.practice_pronunciation()
-                except Exception as e:
-                    print(f"❌ Error en modo pronunciación: {e}")
-                    
-            elif choice == "3":
-                try:
-                    # 🔧 USAR MÉTODO EXISTENTE
-                    assistant.read_text()
-                except Exception as e:
-                    print(f"❌ Error en modo lectura: {e}")
-                    
-            elif choice == "4":
-                try:
-                    from src.modes.interactive_mode import InteractiveMode
-                    interactive = InteractiveMode(assistant)
-                    interactive.run()
-                except ImportError:
-                    print("❌ Modo interactivo no disponible")
-                except Exception as e:
-                    print(f"❌ Error en modo interactivo: {e}")
-                    
-            elif choice == "5":
-                try:
-                    from src.modes.smart_chat_mode import SmartChatMode
-                    smart_chat = SmartChatMode(assistant)
-                    smart_chat.run()
-                except ImportError:
-                    print("❌ Chat inteligente no disponible aún")
-                    print("💡 Usa la opción 4 (Modo Interactivo) mientras tanto")
-                except Exception as e:
-                    print(f"❌ Error en chat inteligente: {e}")
-                    
-            elif choice == "6":
-                try:
-                    # 🔧 USAR FUNCIÓN BÁSICA TEMPORAL
-                    show_basic_statistics()
-                except Exception as e:
-                    print(f"❌ Error mostrando estadísticas: {e}")
-                    
-            elif choice == "7":
-                try:
-                    # 🔧 USAR FUNCIÓN BÁSICA TEMPORAL
-                    show_basic_configuration()
-                except Exception as e:
-                    print(f"❌ Error en configuración: {e}")
-                    
-            elif choice == "8":
-                print("👋 ¡Hasta luego! Sigue practicando.")
-                logger.info("Application exited by user")
-                break
-                
-            else:
-                print("❌ Opción inválida. Por favor, elige 1-8.")
-                
-    except KeyboardInterrupt:
-        print("\n\n⚠️ Programa interrumpido por el usuario.")
-        if assistant:
-            logger.info("Application interrupted by user")
-    except Exception as e:
-        print(f"❌ Error crítico: {e}")
-        if assistant:
-            logger.critical(f"Critical error: {e}")
-        import traceback
-        traceback.print_exc()
-    finally:
-        if assistant:
+            # Verificar estado en hilo separado
+            threading.Thread(target=self.check_status_loop, daemon=True).start()
+            
+        except Exception as e:
+            self.update_status("Error", self.colors['error'])
+            self.add_system_message(f"Error inicializando: {e}")
+    
+    def check_status_loop(self):
+        """Loop para verificar estado de Ollama"""
+        while True:
             try:
-                assistant.cleanup()
-            except:
-                pass
-        print("🔚 Programa terminado.")
+                if self.chat_service.is_online():
+                    status = self.chat_service.get_status()
+                    status_text = f"Online ({status['models']} models)"
+                    self.root.after(0, lambda: self.update_status(status_text, self.colors['success']))
+                else:
+                    self.root.after(0, lambda: self.update_status("Offline", self.colors['error']))
+                    
+            except Exception as e:
+                self.root.after(0, lambda: self.update_status("Error", self.colors['error']))
+            
+            import time
+            time.sleep(10)  # Verificar cada 10 segundos
+    
+    def update_status(self, text, color):
+        """Actualizar estado visual"""
+        self.status_label.config(text=text, fg=color)
+        
+    def show_welcome(self):
+        """Mostrar mensaje de bienvenida"""
+        welcome_msg = """Welcome to IA English Assistant!
+
+I'm here to help you practice English conversation. I can:
+- Have natural conversations with you
+- Help with grammar and vocabulary  
+- Translate between English and Spanish
+- Answer questions about English
+
+Just type a message and let's start chatting!"""
+        
+        self.add_assistant_message(welcome_msg)
+        
+    def send_message(self):
+        """Enviar mensaje"""
+        message = self.message_input.get('1.0', 'end-1c').strip()
+        
+        if not message:
+            return
+            
+        # Mostrar mensaje del usuario
+        self.add_user_message(message)
+        
+        # Limpiar input
+        self.message_input.delete('1.0', 'end')
+        
+        # Deshabilitar boton
+        self.send_button.config(state='disabled', text='Sending...')
+        
+        # Procesar en hilo separado
+        threading.Thread(target=self.process_message, args=(message,), daemon=True).start()
+    
+    def process_message(self, message):
+        """Procesar mensaje en hilo separado"""
+        try:
+            response = self.chat_service.send_message(message)
+            self.last_assistant_message = response
+            
+            # Mostrar respuesta
+            self.root.after(0, lambda: self.add_assistant_message(response))
+            
+        except Exception as e:
+            error_msg = f"Sorry, I encountered an error: {str(e)}"
+            self.root.after(0, lambda: self.add_assistant_message(error_msg))
+        
+        finally:
+            # Rehabilitar boton
+            self.root.after(0, lambda: self.send_button.config(state='normal', text='Send'))
+    
+    def translate_last(self):
+        """Traducir ultimo mensaje del asistente"""
+        if not self.last_assistant_message:
+            self.add_system_message("No hay mensaje para traducir")
+            return
+            
+        # Deshabilitar boton
+        self.translate_button.config(state='disabled', text='Translating...')
+        
+        # Traducir en hilo separado
+        threading.Thread(target=self.process_translation, daemon=True).start()
+    
+    def process_translation(self):
+        """Procesar traduccion en hilo separado"""
+        try:
+            translation = self.chat_service.translate_message(self.last_assistant_message)
+            
+            # Mostrar traduccion
+            self.root.after(0, lambda: self.add_system_message(f"Traduccion: {translation}"))
+            
+        except Exception as e:
+            self.root.after(0, lambda: self.add_system_message(f"Error en traduccion: {e}"))
+        
+        finally:
+            # Rehabilitar boton
+            self.root.after(0, lambda: self.translate_button.config(state='normal', text='Translate'))
+    
+    def add_user_message(self, message):
+        """Agregar mensaje del usuario"""
+        timestamp = datetime.now().strftime("%H:%M")
+        self.add_to_chat(f"[{timestamp}] You:", "user")
+        self.add_to_chat(f"{message}\n", "")
+        
+    def add_assistant_message(self, message):
+        """Agregar mensaje del asistente"""
+        timestamp = datetime.now().strftime("%H:%M")
+        self.add_to_chat(f"\n[{timestamp}] Assistant:", "assistant")
+        self.add_to_chat(f"{message}\n", "")
+        
+    def add_system_message(self, message):
+        """Agregar mensaje del sistema"""
+        timestamp = datetime.now().strftime("%H:%M")
+        self.add_to_chat(f"\n[{timestamp}] System: {message}\n", "system")
+        
+    def add_to_chat(self, text, tag):
+        """Agregar texto al chat"""
+        self.chat_display.config(state='normal')
+        self.chat_display.insert('end', text, tag)
+        self.chat_display.config(state='disabled')
+        self.chat_display.see('end')
+        
+    def on_text_change(self, event):
+        """Manejar cambios en el texto"""
+        # Auto-resize del input
+        content = self.message_input.get('1.0', 'end-1c')
+        lines = content.count('\n') + 1
+        new_height = min(max(lines, 1), 6)  # Entre 1 y 6 lineas
+        self.message_input.config(height=new_height)
+        
+    def on_closing(self):
+        """Manejar cierre de la aplicacion"""
+        if messagebox.askokcancel("Quit", "Do you want to quit?"):
+            self.root.destroy()
+            
+    def run(self):
+        """Ejecutar aplicacion"""
+        self.root.mainloop()
 
 if __name__ == "__main__":
-    main()
+    try:
+        print("Iniciando IA English Assistant...")
+        app = EnglishAssistantApp()
+        app.run()
+    except KeyboardInterrupt:
+        print("\nAplicacion cerrada")
+    except Exception as e:
+        print(f"Error: {e}")
+        input("Presiona Enter para cerrar...")

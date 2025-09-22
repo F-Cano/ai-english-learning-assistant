@@ -1,21 +1,3 @@
-﻿# Dependencias de IA y ML
-transformers>=4.30.0
-torch>=2.0.0
-torchaudio>=2.0.0
-
-# Dependencias de audio
-speechrecognition>=3.10.0
-pyttsx3>=2.90
-pyaudio>=0.2.11
-
-# Dependencias de traducción
-googletrans==4.0.0rc1
-
-# Dependencias generales
-numpy>=1.24.0
+# Requirements minimos - Solo Ollama
 requests>=2.31.0
-pathlib2>=2.3.7
-
-# Para desarrollo
-pytest>=7.4.0
-black>=23.0.0
+# tkinter viene incluido con Python

@@ -1,3 +1,2 @@
-﻿from .settings import Settings, AudioConfig, ModelConfig, PathConfig
-
-__all__ = ['Settings', 'AudioConfig', 'ModelConfig', 'PathConfig']
+from .settings import settings
+__all__ = ['settings']
