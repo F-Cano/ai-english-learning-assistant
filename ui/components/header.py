@@ -103,7 +103,7 @@ class HeaderComponent(UIComponent):
     def _on_ollama_connected(self, event: AppEvent, data: Dict[str, Any]) -> None:
         """Handle Ollama connected event"""
         models_count = len(data.get('models', []))
-        status_text = f"Connected ({models_count} models)"
+        status_text = f"Conectado ({models_count} modelos)"
         color = self.colors['success']
         self._update_status(status_text, color)
     
