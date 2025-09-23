@@ -1,3 +1,16 @@
-# Requirements minimos - Solo Ollama
+# IA English Assistant Dependencies
+
+# HTTP requests for Ollama communication
 requests>=2.31.0
-# tkinter viene incluido con Python
+
+# No additional dependencies required for this application
+# The application uses only Python standard library modules:
+# - tkinter (GUI)
+# - threading (background tasks)
+# - datetime (timestamps)
+# - json (data handling)
+# - logging (application logging)
+# - pathlib (file paths)
+# - typing (type hints)
+# - enum (enumerations)
+# - dataclasses (data models)
