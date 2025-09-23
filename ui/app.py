@@ -274,8 +274,8 @@ class EnglishAssistantApp:
     
     def _on_closing(self) -> None:
         """Handle application closing"""
-        if messagebox.askokcancel("Quit", "Do you want to quit?"):
-            logger.info("Application closing by user request")
+        if messagebox.askokcancel("Cerrar", "¿Quieres salir?"):
+            logger.info("Cierre de la aplicación iniciado por el usuario")
             
             # Show session summary
             self._show_session_summary()
@@ -298,12 +298,12 @@ class EnglishAssistantApp:
             print("\n" + "="*50)
             print("SESSION SUMMARY")
             print("="*50)
-            print(f"Messages sent: {summary['session']['messages_sent']}")
-            print(f"Translations made: {summary['session']['translations_made']}")
-            print(f"Errors encountered: {summary['session']['errors_count']}")
-            print(f"Session duration: {summary['session']['uptime']}")
-            print(f"Connection status: {'Online' if summary['connection']['online'] else 'Offline'}")
-            print(f"Models available: {summary['connection']['models']}")
+            print(f"Mensajes enviados: {summary['session']['messages_sent']}")
+            print(f"Traducciones realizadas: {summary['session']['translations_made']}")
+            print(f"Errores encontrados: {summary['session']['errors_count']}")
+            print(f"Duración de la sesión: {summary['session']['uptime']}")
+            print(f"Estado de la conexión: {'Online' if summary['connection']['online'] else 'Offline'}")
+            print(f"Modelos disponibles: {summary['connection']['models']}")
             print("="*50)
             
         except Exception as e:

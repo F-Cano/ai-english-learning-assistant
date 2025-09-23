@@ -6,41 +6,46 @@ class UIMessages:
     """UI text messages and constants"""
     
     # Welcome messages
-    WELCOME_TITLE = "Welcome to IA English Assistant!"
-    WELCOME_DESCRIPTION = """
-    Event-driven architecture
-    Smart translation with multiple retries
-    Centralized application state
+    WELCOME_TITLE = "¡Bienvenido a IA English Assistant!"
+    WELCOME_DESCRIPTION = """¡Hola! Soy Alex, tu profesor personal de inglés interactivo.
+
+🎯 Aprende con ejercicios personalizados:
+• Práctica vocabulario con ejercicios
+• Corrige gramática paso a paso  
+• Mejora pronunciación con guías
+• Evalúa tu progreso en tiempo real
+
+💡 ¿Sabías que? Aprendes mejor cuando practicas activamente.
+¡Empecemos con ejercicios divertidos!
+
+¿Qué área quieres practicar hoy?"""
     
-    Let's practice English together!
-    """
-    
-    # Status messages
-    STATUS_INITIALIZING = "Initializing..."
-    STATUS_CONNECTING = "Connecting..."
-    STATUS_ONLINE = "Online"
-    STATUS_OFFLINE = "Offline"
+    # Status messages - mantener en español
+    STATUS_INITIALIZING = "Inicializando..."
+    STATUS_CONNECTING = "Conectando..."
+    STATUS_ONLINE = "Conectado"
+    STATUS_OFFLINE = "Desconectado"
     STATUS_ERROR = "Error"
-    STATUS_DISCONNECTED = "Disconnected"
+    STATUS_DISCONNECTED = "Desconectado"
     
     # Button texts
-    BUTTON_SEND = "Send"
-    BUTTON_SENDING = "Sending..."
-    BUTTON_TRANSLATE = "Translate"
-    BUTTON_TRANSLATING = "Translating..."
+    BUTTON_SEND = "Enviar"
+    BUTTON_SENDING = "Enviando..."
+    BUTTON_TRANSLATE = "Traducir"
+    BUTTON_TRANSLATING = "Traduciendo..."
     
     # Error messages
-    ERROR_NO_MESSAGE = "Please enter a message"
-    ERROR_CONNECTION = "Connection error"
-    ERROR_TRANSLATION_FAILED = "Translation failed"
-    ERROR_NO_RESPONSE_TO_TRANSLATE = "No response to translate"
+    ERROR_NO_MESSAGE = "Por favor ingresa un mensaje"
+    ERROR_CONNECTION = "Error de conexión"
+    ERROR_TRANSLATION_FAILED = "Falló la traducción"
+    ERROR_NO_RESPONSE_TO_TRANSLATE = "No hay respuesta para traducir"
     
     # Footer messages
-    FOOTER_HELP = "Ctrl+Enter to send"
-    FOOTER_OLLAMA_LINK = "Get Ollama"
+    FOOTER_HELP = "Ctrl+Enter para enviar"
+    FOOTER_OLLAMA_LINK = "Obtener Ollama"
     
     # Placeholders
-    PLACEHOLDER_MESSAGE = "Type your message here..."
+    PLACEHOLDER_MESSAGE = "Escribe tu mensaje aquí..."
 
 
 class UIConstants:
