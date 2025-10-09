@@ -1,120 +1,90 @@
 """
-Header component with title and status indicator
+Header component with modern design
 """
 import tkinter as tk
 from typing import Dict, Any
-from core.events import AppEvent
 from ui.components.base import UIComponent
-from ui.constants import UIMessages
 from config import config
-from utils.logger import logger
 
 
 class HeaderComponent(UIComponent):
-    """Header component with title and connection status"""
+    """Header component with clean design"""
     
     def __init__(self, parent: tk.Widget, colors: Dict[str, str], 
-                 app_state=None, event_manager=None):
-        super().__init__(parent, colors, app_state, event_manager)
-        self.status_label = None
+                 event_manager, app_state):
+        super().__init__(parent, colors, event_manager, app_state)
         self.title_label = None
-        self._setup_subscriptions()
-    
-    def _setup_subscriptions(self) -> None:
-        """Setup event and state subscriptions"""
-        # Subscribe to connection state changes
-        self.subscribe_to_state('ollama_online', self._on_connection_change)
-        self.subscribe_to_state('models_count', self._on_models_change)
-        
-        # Subscribe to connection events
-        self.subscribe_to_event(AppEvent.OLLAMA_CONNECTED, self._on_ollama_connected)
-        self.subscribe_to_event(AppEvent.OLLAMA_DISCONNECTED, self._on_ollama_disconnected)
-        self.subscribe_to_event(AppEvent.OLLAMA_ERROR, self._on_ollama_error)
+        self.status_label = None
     
     def create(self) -> tk.Frame:
-        """Create header component"""
-        self.frame = tk.Frame(self.parent, bg=self.colors['bg'])
+        """Create header"""
+        self.frame = tk.Frame(self.parent, bg=self.colors['bg'], height=50)  # 🔄 Reducido altura
+        self.frame.pack_propagate(False)
         
         self._create_title()
         self._create_status_indicator()
+        self._setup_event_subscriptions()
         
-        self._is_created = True
-        logger.debug("HeaderComponent created")
         return self.frame
     
     def _create_title(self) -> None:
-        """Create title label"""
+        """Create title with smaller font"""
         self.title_label = tk.Label(
             self.frame,
             text=config.WINDOW_CONFIG['title'],
-            font=self.get_font('title', 'bold'),
+            font=config.get_font_tuple(13, 'bold', 'title'),  # 🔄 Reducido de 15 a 13
             bg=self.colors['bg'],
             fg=self.colors['text']
         )
-        self.title_label.pack(side='left')
+        self.title_label.pack(side='left', padx=(16, 0), pady=15)  # 🔄 Ajustado padding
     
     def _create_status_indicator(self) -> None:
-        """Create status indicator"""
-        status_frame = tk.Frame(self.frame, bg=self.colors['surface'])
-        status_frame.pack(side='right', padx=config.UI_CONFIG['small_padding'], pady=5)
-        
+        """Create compact status indicator"""
         self.status_label = tk.Label(
-            status_frame,
-            text=UIMessages.STATUS_INITIALIZING,
-            font=self.get_font('small'),
-            bg=self.colors['surface'],
-            fg=self.colors['text_secondary'],
-            padx=15,
-            pady=8
+            self.frame,
+            text="Iniciando",  # 🔄 Sin emoji
+            font=config.get_font_tuple(8, 'normal', 'text'),  # 🔄 Reducido de 9 a 8
+            bg=self.colors['warning'],
+            fg='white',
+            padx=10,  # 🔄 Reducido padding
+            pady=4,   # 🔄 Reducido padding
+            relief='flat',
+            bd=0
         )
-        self.status_label.pack()
+        self.status_label.pack(side='right', padx=16, pady=15)  # 🔄 Ajustado padding
     
-    def _update_status(self, text: str, color: str) -> None:
-        """Update status display safely"""
-        def update():
-            try:
-                if self.status_label and self.status_label.winfo_exists():
-                    self.status_label.config(text=text, fg=color)
-            except tk.TclError:
-                pass
-        
-        self.safe_update(update)
-    
-    def _on_connection_change(self, key: str, new_value: Any, old_value: Any) -> None:
-        """Handle connection state changes"""
-        if key == 'ollama_online':
-            if new_value:
-                models_count = self.app_state.get('models_count', 0)
-                status_text = f"{UIMessages.STATUS_ONLINE} ({models_count} models)"
-                color = self.colors['success']
-            else:
-                status_text = UIMessages.STATUS_OFFLINE
-                color = self.colors['error']
+    def _setup_event_subscriptions(self) -> None:
+        """Setup event subscriptions"""
+        try:
+            # 🔄 AGREGAR ESTA LÍNEA AL INICIO
+            if self.event_manager is None:
+                return
+                
+            from core.events import AppEvent
             
-            self._update_status(status_text, color)
+            self.event_manager.subscribe(AppEvent.OLLAMA_CONNECTED, self._on_ollama_connected)
+            self.event_manager.subscribe(AppEvent.OLLAMA_DISCONNECTED, self._on_ollama_disconnected)
+            self.event_manager.subscribe(AppEvent.UI_BUSY, self._on_ui_busy)
+            self.event_manager.subscribe(AppEvent.UI_READY, self._on_ui_ready)
+        except Exception as e:
+            print(f"DEBUG Header: Error setting up subscriptions: {e}")
     
-    def _on_models_change(self, key: str, new_value: Any, old_value: Any) -> None:
-        """Handle models count changes"""
-        if key == 'models_count' and self.app_state.get('ollama_online', False):
-            status_text = f"{UIMessages.STATUS_ONLINE} ({new_value} models)"
-            color = self.colors['success']
-            self._update_status(status_text, color)
+    def _on_ollama_connected(self, data: Dict[str, Any]) -> None:
+        """Handle Ollama connected"""
+        if self.status_label:
+            self.status_label.config(text="Conectado", bg=self.colors['success'])  # 🔄 Sin emoji
     
-    def _on_ollama_connected(self, event: AppEvent, data: Dict[str, Any]) -> None:
-        """Handle Ollama connected event"""
-        models_count = len(data.get('models', []))
-        status_text = f"Conectado ({models_count} modelos)"
-        color = self.colors['success']
-        self._update_status(status_text, color)
+    def _on_ollama_disconnected(self, data: Dict[str, Any]) -> None:
+        """Handle Ollama disconnected"""
+        if self.status_label:
+            self.status_label.config(text="Desconectado", bg=self.colors['error'])  # 🔄 Sin emoji
     
-    def _on_ollama_disconnected(self, event: AppEvent, data: Dict[str, Any]) -> None:
-        """Handle Ollama disconnected event"""
-        status_text = UIMessages.STATUS_DISCONNECTED
-        color = self.colors['error']
-        self._update_status(status_text, color)
+    def _on_ui_busy(self, data: Dict[str, Any]) -> None:
+        """Handle UI busy"""
+        if self.status_label:
+            self.status_label.config(text="Procesando...", bg=self.colors['warning'])  # 🔄 Sin emoji
     
-    def _on_ollama_error(self, event: AppEvent, data: Dict[str, Any]) -> None:
-        """Handle Ollama error event"""
-        status_text = UIMessages.STATUS_ERROR
-        color = self.colors['error']
-        self._update_status(status_text, color)
+    def _on_ui_ready(self, data: Dict[str, Any]) -> None:
+        """Handle UI ready"""
+        if self.status_label:
+            self.status_label.config(text="Listo", bg=self.colors['success'])  # 🔄 Sin emoji

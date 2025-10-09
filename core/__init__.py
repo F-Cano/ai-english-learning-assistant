@@ -1,1 +1,3 @@
-"""Package initialization"""
+"""
+Core package for IA English Assistant
+"""

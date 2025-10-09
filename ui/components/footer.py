@@ -1,169 +1,89 @@
 """
-Footer component with metrics and information
+Footer component with status information
 """
 import tkinter as tk
-import webbrowser
 from typing import Dict, Any
-from datetime import datetime
 from ui.components.base import UIComponent
-from ui.constants import UIMessages
 from config import config
-from utils.logger import logger
 
 
 class FooterComponent(UIComponent):
-    """Footer component with session metrics and links"""
+    """Footer component with iOS-style design"""
     
     def __init__(self, parent: tk.Widget, colors: Dict[str, str], 
-                 app_state=None, event_manager=None):
-        super().__init__(parent, colors, app_state, event_manager)
+                 event_manager, app_state):
+        super().__init__(parent, colors, event_manager, app_state)
+        
+        # Status labels
+        self.status_label = None
         self.metrics_label = None
-        self.help_label = None
-        self.ollama_link = None
+        
+        # 🔄 CORREGIR: Usar método correcto para suscripciones
         self._setup_subscriptions()
     
     def _setup_subscriptions(self) -> None:
-        """Setup state subscriptions"""
-        # Subscribe to metrics changes
-        self.subscribe_to_state('messages_sent', self._on_metrics_change)
-        self.subscribe_to_state('translations_made', self._on_metrics_change)
-        self.subscribe_to_state('errors_count', self._on_metrics_change)
+        """Setup event subscriptions"""
+        try:
+            # 🔄 AGREGAR ESTA LÍNEA AL INICIO
+            if self.event_manager is None:
+                return
+            
+            # 🔄 USAR app_state.subscribe en lugar de subscribe_to_state
+            if hasattr(self.app_state, 'subscribe'):
+                self.app_state.subscribe('messages_sent', self._on_metrics_change)
+                self.app_state.subscribe('translations_made', self._on_metrics_change)
+                self.app_state.subscribe('errors_count', self._on_metrics_change)
+            
+            # Eventos del event manager
+            from core.events import AppEvent
+            self.event_manager.subscribe(AppEvent.OLLAMA_CONNECTED, self._on_connection_change)
+            self.event_manager.subscribe(AppEvent.OLLAMA_DISCONNECTED, self._on_connection_change)
+            self.event_manager.subscribe(AppEvent.MESSAGE_SENT, self._on_message_sent)
+            
+        except Exception as e:
+            print(f"DEBUG Footer: Error setting up subscriptions: {e}")
     
     def create(self) -> tk.Frame:
-        """Create footer component"""
-        self.frame = tk.Frame(self.parent, bg=self.colors['bg'])
+        """Create footer"""
+        self.frame = tk.Frame(self.parent, bg=self.colors['bg'], height=40)
+        self.frame.pack_propagate(False)
         
-        self._create_help_section()
-        self._create_metrics_section()
-        self._create_links_section()
+        self._create_status_display()
+        self._create_metrics_display()
         
-        self._is_created = True
-        logger.debug("FooterComponent created")
         return self.frame
     
-    def _create_help_section(self) -> None:
-        """Create help information section"""
-        self.help_label = tk.Label(
+    def _create_status_display(self) -> None:
+        """Create connection status display"""
+        self.status_label = tk.Label(
             self.frame,
-            text=UIMessages.FOOTER_HELP,
-            font=self.get_font('tiny'),
+            text="Listo",
+            font=config.get_font_tuple(9, 'normal', 'text'),
             bg=self.colors['bg'],
             fg=self.colors['text_muted']
         )
-        self.help_label.pack(side='left')
+        self.status_label.pack(side='left', padx=16, pady=10)
     
-    def _create_metrics_section(self) -> None:
-        """Create session metrics section"""
+    def _create_metrics_display(self) -> None:
+        """Create session metrics display"""
         self.metrics_label = tk.Label(
             self.frame,
-            text=self._get_metrics_text(),
-            font=self.get_font('tiny'),
-            bg=self.colors['bg'],
-            fg=self.colors['text_secondary']
-        )
-        self.metrics_label.pack(side='left', padx=(20, 0))
-    
-    def _create_links_section(self) -> None:
-        """Create links section"""
-        # Ollama link
-        self.ollama_link = tk.Label(
-            self.frame,
-            text=UIMessages.FOOTER_OLLAMA_LINK,
-            font=self.get_font('tiny', 'normal'),
-            bg=self.colors['bg'],
-            fg=self.colors['primary'],
-            cursor='hand2'
-        )
-        self.ollama_link.pack(side='right')
-        self.ollama_link.bind('<Button-1>', self._open_ollama_website)
-        
-        # Session time
-        session_label = tk.Label(
-            self.frame,
-            text=self._get_session_time(),
-            font=self.get_font('tiny'),
+            font=config.get_font_tuple(9, 'normal', 'text'),
             bg=self.colors['bg'],
             fg=self.colors['text_muted']
         )
-        session_label.pack(side='right', padx=(0, 20))
-        
-        # Update session time periodically
-        self._schedule_time_update()
+        self.metrics_label.pack(side='right', padx=16, pady=10)
+
     
-    def _get_metrics_text(self) -> str:
-        """Get formatted metrics text"""
-        if not self.app_state:
-            return "Messages: 0 | Translations: 0"
+    def _on_connection_change(self, data: Dict[str, Any]) -> None:
+        """Handle connection status changes"""
+        if not self.status_label:
+            return
         
-        messages = self.app_state.get('messages_sent', 0)
-        translations = self.app_state.get('translations_made', 0)
-        errors = self.app_state.get('errors_count', 0)
-        
-        base_text = f"Messages: {messages} | Translations: {translations}"
-        if errors > 0:
-            base_text += f" | Errors: {errors}"
-        
-        return base_text
-    
-    def _get_session_time(self) -> str:
-        """Get formatted session time"""
-        if not self.app_state:
-            return "Session: 0:00"
-        
-        session_start = self.app_state.get('session_start')
-        if not session_start:
-            return "Session: 0:00"
-        
-        duration = datetime.now() - session_start
-        hours, remainder = divmod(int(duration.total_seconds()), 3600)
-        minutes, _ = divmod(remainder, 60)
-        
-        if hours > 0:
-            return f"Session: {hours}:{minutes:02d}h"
+        # Simple status based on event
+        if 'connected' in str(data) or 'Conectado' in str(data):
+            self.status_label.config(text="Conectado", fg=self.colors['success'])
         else:
-            return f"Session: {minutes}:02d"
+            self.status_label.config(text="Desconectado", fg=self.colors['error'])
     
-    def _update_metrics_safe(self, text: str) -> None:
-        """Update metrics display safely"""
-        def update():
-            try:
-                if self.metrics_label and self.metrics_label.winfo_exists():
-                    self.metrics_label.config(text=text)
-            except tk.TclError:
-                pass
-        
-        self.safe_update(update)
     
-    def _schedule_time_update(self) -> None:
-        """Schedule session time update"""
-        def update_time():
-            try:
-                if self.frame and self.frame.winfo_exists():
-                    # Find and update session time label
-                    for child in self.frame.winfo_children():
-                        if (isinstance(child, tk.Label) and 
-                            hasattr(child, 'cget') and 
-                            'Session:' in child.cget('text')):
-                            child.config(text=self._get_session_time())
-                            break
-                    
-                    # Schedule next update
-                    self.frame.after(60000, update_time)  # Update every minute
-            except tk.TclError:
-                pass
-        
-        if self.frame:
-            self.frame.after(60000, update_time)  # First update in 1 minute
-    
-    def _open_ollama_website(self, event=None) -> None:
-        """Open Ollama website in browser"""
-        try:
-            webbrowser.open('https://ollama.ai')
-            logger.info("Opened Ollama website")
-        except Exception as e:
-            logger.error(f"Failed to open Ollama website: {e}")
-    
-    def _on_metrics_change(self, key: str, new_value: Any, old_value: Any) -> None:
-        """Handle metrics state changes"""
-        metrics_text = self._get_metrics_text()
-        self._update_metrics_safe(metrics_text)

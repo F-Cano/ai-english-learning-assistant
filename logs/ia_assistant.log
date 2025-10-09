@@ -1,0 +1,1330 @@
+2025-09-23 17:08:30,867 - main - INFO - Starting IA English Assistant...
+2025-09-23 17:08:30,867 - main - INFO - Validating environment...
+2025-09-23 17:08:30,868 - main - INFO - Environment validation passed
+2025-09-23 17:08:30,868 - main - INFO - Initializing application...
+2025-09-23 17:08:30,868 - ia_assistant - INFO - AppState initialized
+2025-09-23 17:08:30,868 - ia_assistant - INFO - EventManager initialized
+2025-09-23 17:08:30,869 - ia_assistant - INFO - EnglishAssistantApp initialized
+2025-09-23 17:08:30,869 - main - INFO - Starting application...
+2025-09-23 17:08:30,869 - ia_assistant - INFO - Starting English Assistant application...
+2025-09-23 17:08:30,869 - ia_assistant - INFO - Initializing application...
+2025-09-23 17:08:30,976 - ia_assistant - ERROR - Failed to create services: 'AppConfig' object has no attribute 'get_ollama_config'
+2025-09-23 17:08:30,977 - ia_assistant - ERROR - Failed to initialize application: 'AppConfig' object has no attribute 'get_ollama_config'
+2025-09-23 17:08:30,977 - ia_assistant - ERROR - Application error: 'AppConfig' object has no attribute 'get_ollama_config'
+2025-09-23 17:08:30,977 - ia_assistant - INFO - Application stopped
+2025-09-23 17:08:30,978 - main - ERROR - Fatal application error: 'AppConfig' object has no attribute 'get_ollama_config'
+Traceback (most recent call last):
+  File "d:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\main.py", line 110, in main
+    app.run()
+    ~~~~~~~^^
+  File "d:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 330, in run
+    self.initialize()
+    ~~~~~~~~~~~~~~~^^
+  File "d:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 56, in initialize
+    self._create_services()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "d:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 108, in _create_services
+    self.chat_service = ChatService(
+                        ~~~~~~~~~~~^
+        event_manager=self.event_manager,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        app_state=self.app_state
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "d:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\services\chat_service.py", line 21, in __init__
+    self.ollama_service = OllamaService(event_manager=event_manager)
+                          ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\services\ollama_service.py", line 20, in __init__
+    self.base_url = base_url or config.get_ollama_config()['base_url']
+                                ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AppConfig' object has no attribute 'get_ollama_config'
+2025-09-23 17:09:12,168 - ia_assistant - INFO - Cierre de la aplicación iniciado por el usuario
+2025-09-24 07:56:01,913 - main - INFO - Starting IA English Assistant...
+2025-09-24 07:56:01,914 - main - INFO - Validating environment...
+2025-09-24 07:56:01,914 - main - INFO - Environment validation passed
+2025-09-24 07:56:01,915 - main - INFO - Initializing application...
+2025-09-24 07:56:01,915 - ia_assistant - INFO - AppState initialized
+2025-09-24 07:56:01,915 - ia_assistant - INFO - EventManager initialized
+2025-09-24 07:56:01,915 - ia_assistant - INFO - EnglishAssistantApp initialized
+2025-09-24 07:56:01,916 - main - INFO - Starting application...
+2025-09-24 07:56:01,916 - ia_assistant - INFO - Starting English Assistant application...
+2025-09-24 07:56:01,916 - ia_assistant - INFO - Initializing application...
+2025-09-24 07:56:02,356 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 07:56:04,468 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 07:56:06,540 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 07:56:06,541 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 07:56:06,541 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 07:56:06,541 - ia_assistant - INFO - New session created: session_20250924_075606
+2025-09-24 07:56:06,542 - ia_assistant - INFO - ChatService initialized
+2025-09-24 07:56:06,542 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 07:56:08,592 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 07:56:10,659 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 07:56:10,660 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 07:56:10,660 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 07:56:10,660 - ia_assistant - INFO - TranslationService initialized
+2025-09-24 07:56:10,660 - ia_assistant - INFO - Services created successfully
+2025-09-24 07:56:10,666 - ia_assistant - ERROR - Failed to create UI components: unknown font style "medium"
+2025-09-24 07:56:10,667 - ia_assistant - ERROR - Failed to initialize application: unknown font style "medium"
+2025-09-24 07:56:10,667 - ia_assistant - ERROR - Application error: unknown font style "medium"
+2025-09-24 07:56:10,667 - ia_assistant - INFO - Application stopped
+2025-09-24 07:56:10,667 - main - ERROR - Fatal application error: unknown font style "medium"
+Traceback (most recent call last):
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\main.py", line 110, in main
+    app.run()
+    ~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 330, in run
+    self.initialize()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 57, in initialize
+    self._create_ui_components()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 138, in _create_ui_components
+    header_frame = self.header.create()
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\components\header.py", line 40, in create
+    self._create_status_indicator()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\components\header.py", line 60, in _create_status_indicator
+    self.status_label, pill_container = pill_helper.create(
+                                        ~~~~~~~~~~~~~~~~~~^
+        text="● Iniciando",
+        ^^^^^^^^^^^^^^^^^^^
+        status_color=self.colors['warning']
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\components\modern_widgets.py", line 229, in create
+    status_label = tk.Label(
+        pill_container,
+    ...<7 lines>...
+        bd=0
+    )
+  File "C:\Users\F-cano\AppData\Local\Programs\Python\Python313\Lib\tkinter\__init__.py", line 3367, in __init__
+    Widget.__init__(self, master, 'label', cnf, kw)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\F-cano\AppData\Local\Programs\Python\Python313\Lib\tkinter\__init__.py", line 2780, in __init__
+    self.tk.call(
+    ~~~~~~~~~~~~^
+        (widgetName, self._w) + extra + self._options(cnf))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_tkinter.TclError: unknown font style "medium"
+2025-09-24 07:56:36,161 - ia_assistant - INFO - Cierre de la aplicación iniciado por el usuario
+2025-09-24 07:58:52,669 - main - INFO - Starting IA English Assistant...
+2025-09-24 07:58:52,669 - main - INFO - Validating environment...
+2025-09-24 07:58:52,670 - main - INFO - Environment validation passed
+2025-09-24 07:58:52,670 - main - INFO - Initializing application...
+2025-09-24 07:58:52,670 - ia_assistant - INFO - AppState initialized
+2025-09-24 07:58:52,670 - ia_assistant - INFO - EventManager initialized
+2025-09-24 07:58:52,670 - ia_assistant - INFO - EnglishAssistantApp initialized
+2025-09-24 07:58:52,671 - main - INFO - Starting application...
+2025-09-24 07:58:52,671 - ia_assistant - INFO - Starting English Assistant application...
+2025-09-24 07:58:52,671 - ia_assistant - INFO - Initializing application...
+2025-09-24 07:58:52,775 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 07:58:54,821 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 07:58:56,883 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 07:58:56,883 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 07:58:56,884 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 07:58:56,884 - ia_assistant - INFO - New session created: session_20250924_075856
+2025-09-24 07:58:56,884 - ia_assistant - INFO - ChatService initialized
+2025-09-24 07:58:56,885 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 07:58:58,954 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 07:59:01,005 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 07:59:01,005 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 07:59:01,005 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 07:59:01,006 - ia_assistant - INFO - TranslationService initialized
+2025-09-24 07:59:01,006 - ia_assistant - INFO - Services created successfully
+2025-09-24 07:59:01,025 - ia_assistant - ERROR - Failed to create UI components: unknown font style "medium"
+2025-09-24 07:59:01,025 - ia_assistant - ERROR - Failed to initialize application: unknown font style "medium"
+2025-09-24 07:59:01,025 - ia_assistant - ERROR - Application error: unknown font style "medium"
+2025-09-24 07:59:01,025 - ia_assistant - INFO - Application stopped
+2025-09-24 07:59:01,026 - main - ERROR - Fatal application error: unknown font style "medium"
+Traceback (most recent call last):
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\main.py", line 110, in main
+    app.run()
+    ~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 330, in run
+    self.initialize()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 57, in initialize
+    self._create_ui_components()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 145, in _create_ui_components
+    chat_frame = self.chat_display.create()
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\components\chat_display.py", line 41, in create
+    self._setup_text_tags()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\components\chat_display.py", line 77, in _setup_text_tags
+    self.chat_display.tag_configure('user',
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+                                   foreground=self.colors['primary'],
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                   font=config.get_font_tuple(11, 'medium', 'text'))  # SF Pro Medium
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\F-cano\AppData\Local\Programs\Python\Python313\Lib\tkinter\__init__.py", line 4098, in tag_configure
+    return self._configure(('tag', 'configure', tagName), cnf, kw)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\F-cano\AppData\Local\Programs\Python\Python313\Lib\tkinter\__init__.py", line 1812, in _configure
+    self.tk.call(_flatten((self._w, cmd)) + self._options(cnf))
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_tkinter.TclError: unknown font style "medium"
+2025-09-24 08:02:28,420 - main - INFO - Starting IA English Assistant...
+2025-09-24 08:02:28,420 - main - INFO - Validating environment...
+2025-09-24 08:02:28,421 - main - INFO - Environment validation passed
+2025-09-24 08:02:28,421 - main - INFO - Initializing application...
+2025-09-24 08:02:28,421 - ia_assistant - INFO - AppState initialized
+2025-09-24 08:02:28,421 - ia_assistant - INFO - EventManager initialized
+2025-09-24 08:02:28,421 - ia_assistant - INFO - EnglishAssistantApp initialized
+2025-09-24 08:02:28,422 - main - INFO - Starting application...
+2025-09-24 08:02:28,422 - ia_assistant - INFO - Starting English Assistant application...
+2025-09-24 08:02:28,422 - ia_assistant - INFO - Initializing application...
+2025-09-24 08:02:28,531 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 08:02:30,599 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:02:32,657 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 08:02:32,658 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 08:02:32,658 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 08:02:32,658 - ia_assistant - INFO - New session created: session_20250924_080232
+2025-09-24 08:02:32,659 - ia_assistant - INFO - ChatService initialized
+2025-09-24 08:02:32,659 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 08:02:34,721 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:02:36,793 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 08:02:36,794 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 08:02:36,794 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 08:02:36,794 - ia_assistant - INFO - TranslationService initialized
+2025-09-24 08:02:36,795 - ia_assistant - INFO - Services created successfully
+2025-09-24 08:02:36,815 - ia_assistant - ERROR - Failed to create UI components: type object 'AppEvent' has no attribute 'TRANSLATION_RECEIVED'
+2025-09-24 08:02:36,815 - ia_assistant - ERROR - Failed to initialize application: type object 'AppEvent' has no attribute 'TRANSLATION_RECEIVED'
+2025-09-24 08:02:36,815 - ia_assistant - ERROR - Application error: type object 'AppEvent' has no attribute 'TRANSLATION_RECEIVED'
+2025-09-24 08:02:36,816 - ia_assistant - INFO - Application stopped
+2025-09-24 08:02:36,816 - main - ERROR - Fatal application error: type object 'AppEvent' has no attribute 'TRANSLATION_RECEIVED'
+Traceback (most recent call last):
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\main.py", line 110, in main
+    app.run()
+    ~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 330, in run
+    self.initialize()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 57, in initialize
+    self._create_ui_components()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 145, in _create_ui_components
+    chat_frame = self.chat_display.create()
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\components\chat_display.py", line 26, in create
+    self._setup_event_subscriptions()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\components\chat_display.py", line 91, in _setup_event_subscriptions
+    self.event_manager.subscribe(AppEvent.TRANSLATION_RECEIVED, self._on_translation_received)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'AppEvent' has no attribute 'TRANSLATION_RECEIVED'. Did you mean: 'TRANSLATION_SUCCESS'?
+2025-09-24 08:02:59,529 - ia_assistant - INFO - Cierre de la aplicación iniciado por el usuario
+2025-09-24 08:08:57,622 - main - INFO - Starting IA English Assistant...
+2025-09-24 08:08:57,622 - main - INFO - Validating environment...
+2025-09-24 08:08:57,623 - main - INFO - Environment validation passed
+2025-09-24 08:08:57,623 - main - INFO - Initializing application...
+2025-09-24 08:08:57,623 - ia_assistant - INFO - AppState initialized
+2025-09-24 08:08:57,623 - ia_assistant - INFO - EventManager initialized
+2025-09-24 08:08:57,623 - ia_assistant - INFO - EnglishAssistantApp initialized
+2025-09-24 08:08:57,624 - main - INFO - Starting application...
+2025-09-24 08:08:57,624 - ia_assistant - INFO - Starting English Assistant application...
+2025-09-24 08:08:57,624 - ia_assistant - INFO - Initializing application...
+2025-09-24 08:08:57,727 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 08:08:59,780 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:09:01,849 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 08:09:01,849 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 08:09:01,849 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 08:09:01,850 - ia_assistant - INFO - New session created: session_20250924_080901
+2025-09-24 08:09:01,850 - ia_assistant - INFO - ChatService initialized
+2025-09-24 08:09:01,850 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 08:09:03,910 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:09:05,966 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 08:09:05,966 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 08:09:05,967 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 08:09:05,967 - ia_assistant - INFO - TranslationService initialized
+2025-09-24 08:09:05,967 - ia_assistant - INFO - Services created successfully
+2025-09-24 08:09:06,135 - ia_assistant - ERROR - Failed to create UI components: 'AppConfig' object has no attribute 'get_font'
+2025-09-24 08:09:06,136 - ia_assistant - ERROR - Failed to initialize application: 'AppConfig' object has no attribute 'get_font'
+2025-09-24 08:09:06,136 - ia_assistant - ERROR - Application error: 'AppConfig' object has no attribute 'get_font'
+2025-09-24 08:09:06,136 - ia_assistant - INFO - Application stopped
+2025-09-24 08:09:06,136 - main - ERROR - Fatal application error: 'AppConfig' object has no attribute 'get_font'
+Traceback (most recent call last):
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\main.py", line 110, in main
+    app.run()
+    ~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 330, in run
+    self.initialize()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 57, in initialize
+    self._create_ui_components()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 162, in _create_ui_components
+    footer_frame = self.footer.create()
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\components\footer.py", line 38, in create
+    self._create_links_section()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\components\footer.py", line 75, in _create_links_section
+    font=self.get_font('tiny', 'normal'),
+         ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\components\base.py", line 90, in get_font
+    return config.get_font(size_key, weight)
+           ^^^^^^^^^^^^^^^
+AttributeError: 'AppConfig' object has no attribute 'get_font'
+2025-09-24 08:11:18,481 - ia_assistant - INFO - Cierre de la aplicación iniciado por el usuario
+2025-09-24 08:16:03,613 - main - INFO - Starting IA English Assistant...
+2025-09-24 08:16:03,613 - main - INFO - Validating environment...
+2025-09-24 08:16:03,614 - main - INFO - Environment validation passed
+2025-09-24 08:16:03,614 - main - INFO - Initializing application...
+2025-09-24 08:16:03,614 - ia_assistant - INFO - AppState initialized
+2025-09-24 08:16:03,615 - ia_assistant - INFO - EventManager initialized
+2025-09-24 08:16:03,615 - ia_assistant - INFO - EnglishAssistantApp initialized
+2025-09-24 08:16:03,615 - main - INFO - Starting application...
+2025-09-24 08:16:03,615 - ia_assistant - INFO - Starting English Assistant application...
+2025-09-24 08:16:03,616 - ia_assistant - INFO - Initializing application...
+2025-09-24 08:16:03,728 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 08:16:05,784 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:16:07,850 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 08:16:07,850 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 08:16:07,850 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 08:16:07,851 - ia_assistant - INFO - New session created: session_20250924_081607
+2025-09-24 08:16:07,851 - ia_assistant - INFO - ChatService initialized
+2025-09-24 08:16:07,851 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 08:16:09,884 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:16:11,917 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 08:16:11,917 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 08:16:11,917 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 08:16:11,918 - ia_assistant - INFO - TranslationService initialized
+2025-09-24 08:16:11,918 - ia_assistant - INFO - Services created successfully
+2025-09-24 08:16:12,094 - ia_assistant - INFO - UI components created successfully
+2025-09-24 08:16:12,094 - ia_assistant - INFO - Application initialized successfully
+2025-09-24 08:16:14,149 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:16:16,214 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:16:28,302 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:16:30,359 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:16:42,414 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:16:44,466 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:16:56,546 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:16:58,260 - ia_assistant - INFO - Cierre de la aplicación iniciado por el usuario
+2025-09-24 08:16:58,300 - ia_assistant - INFO - Application stopped
+2025-09-24 08:16:58,301 - main - INFO - Application finished normally
+2025-09-24 08:20:02,146 - main - INFO - Starting IA English Assistant...
+2025-09-24 08:20:02,147 - main - INFO - Validating environment...
+2025-09-24 08:20:02,147 - main - INFO - Environment validation passed
+2025-09-24 08:20:02,147 - main - INFO - Initializing application...
+2025-09-24 08:20:02,147 - ia_assistant - INFO - AppState initialized
+2025-09-24 08:20:02,148 - ia_assistant - INFO - EventManager initialized
+2025-09-24 08:20:02,148 - ia_assistant - INFO - EnglishAssistantApp initialized
+2025-09-24 08:20:02,148 - main - INFO - Starting application...
+2025-09-24 08:20:02,148 - ia_assistant - INFO - Starting English Assistant application...
+2025-09-24 08:20:02,148 - ia_assistant - INFO - Initializing application...
+2025-09-24 08:20:02,265 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 08:20:04,337 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:20:06,378 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 08:20:06,378 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 08:20:06,378 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 08:20:06,379 - ia_assistant - INFO - New session created: session_20250924_082006
+2025-09-24 08:20:06,379 - ia_assistant - INFO - ChatService initialized
+2025-09-24 08:20:06,380 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 08:20:08,430 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:20:10,493 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 08:20:10,494 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 08:20:10,494 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 08:20:10,494 - ia_assistant - INFO - TranslationService initialized
+2025-09-24 08:20:10,494 - ia_assistant - INFO - Services created successfully
+2025-09-24 08:20:10,736 - ia_assistant - INFO - UI components created successfully
+2025-09-24 08:20:10,739 - ia_assistant - ERROR - Error in event handler for ui_ready: HeaderComponent._on_ui_ready() takes 2 positional arguments but 3 were given
+2025-09-24 08:20:10,740 - ia_assistant - INFO - Application initialized successfully
+2025-09-24 08:20:12,809 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:20:14,875 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:20:14,876 - ia_assistant - ERROR - Error in event handler for ollama_connected: HeaderComponent._on_ollama_connected() takes 2 positional arguments but 3 were given
+2025-09-24 08:20:26,899 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:20:28,942 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:20:28,943 - ia_assistant - ERROR - Error in event handler for ollama_connected: HeaderComponent._on_ollama_connected() takes 2 positional arguments but 3 were given
+2025-09-24 08:20:40,977 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:20:43,060 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:20:43,061 - ia_assistant - ERROR - Error in event handler for ollama_connected: HeaderComponent._on_ollama_connected() takes 2 positional arguments but 3 were given
+2025-09-24 08:20:55,115 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:20:57,146 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:20:57,146 - ia_assistant - ERROR - Error in event handler for ollama_connected: HeaderComponent._on_ollama_connected() takes 2 positional arguments but 3 were given
+2025-09-24 08:21:09,209 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:21:11,259 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:21:11,260 - ia_assistant - ERROR - Error in event handler for ollama_connected: HeaderComponent._on_ollama_connected() takes 2 positional arguments but 3 were given
+2025-09-24 08:21:23,301 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:21:25,346 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:21:25,346 - ia_assistant - ERROR - Error in event handler for ollama_connected: HeaderComponent._on_ollama_connected() takes 2 positional arguments but 3 were given
+2025-09-24 08:21:37,385 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:21:39,425 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:21:39,425 - ia_assistant - ERROR - Error in event handler for ollama_connected: HeaderComponent._on_ollama_connected() takes 2 positional arguments but 3 were given
+2025-09-24 08:21:51,480 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:21:53,536 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:21:53,536 - ia_assistant - ERROR - Error in event handler for ollama_connected: HeaderComponent._on_ollama_connected() takes 2 positional arguments but 3 were given
+2025-09-24 08:22:05,567 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:22:07,616 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:22:07,617 - ia_assistant - ERROR - Error in event handler for ollama_connected: HeaderComponent._on_ollama_connected() takes 2 positional arguments but 3 were given
+2025-09-24 08:22:19,678 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:22:21,743 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:22:21,743 - ia_assistant - ERROR - Error in event handler for ollama_connected: HeaderComponent._on_ollama_connected() takes 2 positional arguments but 3 were given
+2025-09-24 08:22:33,783 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:22:35,846 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:22:35,847 - ia_assistant - ERROR - Error in event handler for ollama_connected: HeaderComponent._on_ollama_connected() takes 2 positional arguments but 3 were given
+2025-09-24 08:22:47,902 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:22:49,935 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:22:49,935 - ia_assistant - ERROR - Error in event handler for ollama_connected: HeaderComponent._on_ollama_connected() takes 2 positional arguments but 3 were given
+2025-09-24 08:23:02,004 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:23:04,057 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:23:04,058 - ia_assistant - ERROR - Error in event handler for ollama_connected: HeaderComponent._on_ollama_connected() takes 2 positional arguments but 3 were given
+2025-09-24 08:23:16,126 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:23:18,180 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:23:18,181 - ia_assistant - ERROR - Error in event handler for ollama_connected: HeaderComponent._on_ollama_connected() takes 2 positional arguments but 3 were given
+2025-09-24 08:23:30,227 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:23:32,271 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:23:32,272 - ia_assistant - ERROR - Error in event handler for ollama_connected: HeaderComponent._on_ollama_connected() takes 2 positional arguments but 3 were given
+2025-09-24 08:23:44,294 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:23:46,319 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:23:46,320 - ia_assistant - ERROR - Error in event handler for ollama_connected: HeaderComponent._on_ollama_connected() takes 2 positional arguments but 3 were given
+2025-09-24 08:23:58,355 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:24:00,414 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:24:00,415 - ia_assistant - ERROR - Error in event handler for ollama_connected: HeaderComponent._on_ollama_connected() takes 2 positional arguments but 3 were given
+2025-09-24 08:24:03,182 - ia_assistant - INFO - Cierre de la aplicación iniciado por el usuario
+2025-09-24 08:24:03,224 - ia_assistant - INFO - Application stopped
+2025-09-24 08:24:03,225 - main - INFO - Application finished normally
+2025-09-24 08:25:52,777 - main - INFO - Starting IA English Assistant...
+2025-09-24 08:25:52,778 - main - INFO - Validating environment...
+2025-09-24 08:25:52,778 - main - INFO - Environment validation passed
+2025-09-24 08:25:52,778 - main - INFO - Initializing application...
+2025-09-24 08:25:52,778 - ia_assistant - INFO - AppState initialized
+2025-09-24 08:25:52,779 - ia_assistant - INFO - EventManager initialized
+2025-09-24 08:25:52,779 - ia_assistant - INFO - EnglishAssistantApp initialized
+2025-09-24 08:25:52,779 - main - INFO - Starting application...
+2025-09-24 08:25:52,779 - ia_assistant - INFO - Starting English Assistant application...
+2025-09-24 08:25:52,779 - ia_assistant - INFO - Initializing application...
+2025-09-24 08:25:52,885 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 08:25:54,947 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:25:57,003 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 08:25:57,003 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 08:25:57,004 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 08:25:57,004 - ia_assistant - INFO - New session created: session_20250924_082557
+2025-09-24 08:25:57,005 - ia_assistant - INFO - ChatService initialized
+2025-09-24 08:25:57,005 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 08:25:59,044 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:26:01,107 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 08:26:01,108 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 08:26:01,108 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 08:26:01,108 - ia_assistant - INFO - TranslationService initialized
+2025-09-24 08:26:01,108 - ia_assistant - INFO - Services created successfully
+2025-09-24 08:26:01,312 - ia_assistant - INFO - UI components created successfully
+2025-09-24 08:26:01,313 - ia_assistant - ERROR - Error in event handler for ui_ready: HeaderComponent._on_ui_ready() takes 2 positional arguments but 3 were given
+2025-09-24 08:26:01,313 - ia_assistant - ERROR - Error in event handler for ui_ready: InputAreaComponent._on_ui_ready() takes 2 positional arguments but 3 were given
+2025-09-24 08:26:01,314 - ia_assistant - INFO - Application initialized successfully
+2025-09-24 08:26:03,364 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:26:05,405 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:26:05,405 - ia_assistant - ERROR - Error in event handler for ollama_connected: HeaderComponent._on_ollama_connected() takes 2 positional arguments but 3 were given
+2025-09-24 08:26:05,406 - ia_assistant - ERROR - Error in event handler for ollama_connected: InputAreaComponent._on_ollama_connected() takes 2 positional arguments but 3 were given
+2025-09-24 08:26:17,463 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:26:19,504 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:26:19,504 - ia_assistant - ERROR - Error in event handler for ollama_connected: HeaderComponent._on_ollama_connected() takes 2 positional arguments but 3 were given
+2025-09-24 08:26:19,504 - ia_assistant - ERROR - Error in event handler for ollama_connected: InputAreaComponent._on_ollama_connected() takes 2 positional arguments but 3 were given
+2025-09-24 08:26:31,547 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:26:33,581 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:26:33,582 - ia_assistant - ERROR - Error in event handler for ollama_connected: HeaderComponent._on_ollama_connected() takes 2 positional arguments but 3 were given
+2025-09-24 08:26:33,582 - ia_assistant - ERROR - Error in event handler for ollama_connected: InputAreaComponent._on_ollama_connected() takes 2 positional arguments but 3 were given
+2025-09-24 08:26:45,621 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:26:47,663 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:26:47,664 - ia_assistant - ERROR - Error in event handler for ollama_connected: HeaderComponent._on_ollama_connected() takes 2 positional arguments but 3 were given
+2025-09-24 08:26:47,664 - ia_assistant - ERROR - Error in event handler for ollama_connected: InputAreaComponent._on_ollama_connected() takes 2 positional arguments but 3 were given
+2025-09-24 08:26:53,106 - ia_assistant - INFO - Cierre de la aplicación iniciado por el usuario
+2025-09-24 08:26:53,146 - ia_assistant - INFO - Application stopped
+2025-09-24 08:26:53,146 - main - INFO - Application finished normally
+2025-09-24 08:29:25,617 - main - INFO - Starting IA English Assistant...
+2025-09-24 08:29:25,617 - main - INFO - Validating environment...
+2025-09-24 08:29:25,618 - main - INFO - Environment validation passed
+2025-09-24 08:29:25,618 - main - INFO - Initializing application...
+2025-09-24 08:29:25,618 - ia_assistant - INFO - AppState initialized
+2025-09-24 08:29:25,618 - ia_assistant - INFO - EventManager initialized
+2025-09-24 08:29:25,618 - ia_assistant - INFO - EnglishAssistantApp initialized
+2025-09-24 08:29:25,618 - main - INFO - Starting application...
+2025-09-24 08:29:25,619 - ia_assistant - INFO - Starting English Assistant application...
+2025-09-24 08:29:25,619 - ia_assistant - INFO - Initializing application...
+2025-09-24 08:29:25,738 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 08:29:27,791 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:29:29,869 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 08:29:29,869 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 08:29:29,869 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 08:29:29,870 - ia_assistant - INFO - New session created: session_20250924_082929
+2025-09-24 08:29:29,870 - ia_assistant - INFO - ChatService initialized
+2025-09-24 08:29:29,870 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 08:29:31,897 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:29:33,954 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 08:29:33,955 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 08:29:33,955 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 08:29:33,955 - ia_assistant - INFO - TranslationService initialized
+2025-09-24 08:29:33,955 - ia_assistant - INFO - Services created successfully
+2025-09-24 08:29:34,001 - ia_assistant - ERROR - Failed to create UI components: InputAreaComponent.__init__() got an unexpected keyword argument 'send_callback'
+2025-09-24 08:29:34,002 - ia_assistant - ERROR - Failed to initialize application: InputAreaComponent.__init__() got an unexpected keyword argument 'send_callback'
+2025-09-24 08:29:34,002 - ia_assistant - ERROR - Application error: InputAreaComponent.__init__() got an unexpected keyword argument 'send_callback'
+2025-09-24 08:29:34,002 - ia_assistant - INFO - Application stopped
+2025-09-24 08:29:34,002 - main - ERROR - Fatal application error: InputAreaComponent.__init__() got an unexpected keyword argument 'send_callback'
+Traceback (most recent call last):
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\main.py", line 110, in main
+    app.run()
+    ~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 330, in run
+    self.initialize()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 57, in initialize
+    self._create_ui_components()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 149, in _create_ui_components
+    self.input_area = InputAreaComponent(
+                      ~~~~~~~~~~~~~~~~~~^
+        main_frame, self.colors,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        translate_callback=self._translate_last_response
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: InputAreaComponent.__init__() got an unexpected keyword argument 'send_callback'
+2025-09-24 08:29:38,340 - ia_assistant - INFO - Cierre de la aplicación iniciado por el usuario
+2025-09-24 08:38:51,882 - main - INFO - Starting IA English Assistant...
+2025-09-24 08:38:51,882 - main - INFO - Validating environment...
+2025-09-24 08:38:51,883 - main - INFO - Environment validation passed
+2025-09-24 08:38:51,883 - main - INFO - Initializing application...
+2025-09-24 08:38:51,883 - ia_assistant - INFO - AppState initialized
+2025-09-24 08:38:51,883 - ia_assistant - INFO - EventManager initialized
+2025-09-24 08:38:51,883 - ia_assistant - INFO - EnglishAssistantApp initialized
+2025-09-24 08:38:51,884 - main - INFO - Starting application...
+2025-09-24 08:38:51,884 - ia_assistant - INFO - Starting English Assistant application...
+2025-09-24 08:38:51,884 - ia_assistant - INFO - Initializing application...
+2025-09-24 08:38:51,992 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 08:38:54,056 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:38:56,114 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 08:38:56,115 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 08:38:56,115 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 08:38:56,116 - ia_assistant - INFO - New session created: session_20250924_083856
+2025-09-24 08:38:56,116 - ia_assistant - INFO - ChatService initialized
+2025-09-24 08:38:56,116 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 08:38:58,173 - ia_assistant - INFO - Connection to Ollama established
+2025-09-24 08:39:00,228 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 08:39:00,228 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 08:39:00,228 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 08:39:00,229 - ia_assistant - INFO - TranslationService initialized
+2025-09-24 08:39:00,229 - ia_assistant - INFO - Services created successfully
+2025-09-24 08:39:00,261 - ia_assistant - ERROR - Failed to initialize application: 'EnglishAssistantApp' object has no attribute 'logger'
+2025-09-24 08:39:00,261 - ia_assistant - ERROR - Application error: 'EnglishAssistantApp' object has no attribute 'logger'
+2025-09-24 08:39:00,261 - ia_assistant - INFO - Application stopped
+2025-09-24 08:39:00,262 - main - ERROR - Fatal application error: 'EnglishAssistantApp' object has no attribute 'logger'
+Traceback (most recent call last):
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 143, in _create_ui_components
+    chat_frame = self.chat_display.create()
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\components\chat_display.py", line 27, in create
+    self._setup_event_subscriptions()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\components\chat_display.py", line 107, in _setup_event_subscriptions
+    self.app_state.subscribe('welcome_shown', self._on_welcome_state_change)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\core\events.py", line 46, in subscribe
+    logger.debug(f"Handler subscribed to {event.value}")
+                                          ^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'value'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\main.py", line 110, in main
+    app.run()
+    ~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 322, in run
+    self.initialize()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 57, in initialize
+    self._create_ui_components()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 169, in _create_ui_components
+    self.logger.error(f"Failed to create UI components: {str(e)}")
+    ^^^^^^^^^^^
+AttributeError: 'EnglishAssistantApp' object has no attribute 'logger'
+2025-09-24 08:56:55,796 - main - INFO - Starting IA English Assistant...
+2025-09-24 08:56:55,796 - main - INFO - Validating environment...
+2025-09-24 08:56:55,797 - main - INFO - Environment validation passed
+2025-09-24 08:56:55,797 - main - INFO - Initializing application...
+2025-09-24 08:56:55,798 - ia_assistant - INFO - EventManager initialized
+2025-09-24 08:56:55,798 - ia_assistant - INFO - EnglishAssistantApp initialized
+2025-09-24 08:56:55,798 - main - INFO - Starting application...
+2025-09-24 08:56:55,798 - ia_assistant - INFO - Starting English Assistant application...
+2025-09-24 08:56:55,799 - ia_assistant - INFO - Initializing application...
+2025-09-24 08:56:55,904 - ia_assistant - ERROR - Failed to create services: 'timeout'
+2025-09-24 08:56:55,904 - ia_assistant - ERROR - Failed to initialize application: 'timeout'
+2025-09-24 08:56:55,905 - ia_assistant - ERROR - Application error: 'timeout'
+2025-09-24 08:56:55,905 - ia_assistant - INFO - Application stopped
+2025-09-24 08:56:55,905 - main - ERROR - Fatal application error: 'timeout'
+Traceback (most recent call last):
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\main.py", line 110, in main
+    app.run()
+    ~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 360, in run
+    self.initialize()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 64, in initialize
+    self._create_services()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 118, in _create_services
+    self.ollama_service = OllamaService()  # Crear OllamaService primero
+                          ~~~~~~~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\core\services\ollama_service.py", line 26, in __init__
+    self.timeout = config.OLLAMA_CONFIG['timeout']
+                   ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'timeout'
+2025-09-24 09:00:12,332 - main - INFO - Starting IA English Assistant...
+2025-09-24 09:00:12,333 - main - INFO - Validating environment...
+2025-09-24 09:00:12,333 - main - ERROR - Environment validation failed:
+2025-09-24 09:00:12,333 - main - ERROR -   - Configuration error: 'Config' object has no attribute 'validate_config'
+2025-09-24 09:02:52,173 - main - INFO - Starting IA English Assistant...
+2025-09-24 09:02:52,174 - main - INFO - Validating environment...
+2025-09-24 09:02:52,175 - main - ERROR - Environment validation failed:
+2025-09-24 09:02:52,175 - main - ERROR -   - Invalid configuration detected
+2025-09-24 09:05:59,831 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-09-24 09:05:59,832 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-09-24 09:05:59,832 - main - INFO - Starting IA English Assistant...
+2025-09-24 09:05:59,832 - main - INFO - Validating environment...
+2025-09-24 09:06:00,014 - main - INFO - Environment validation passed
+2025-09-24 09:06:00,015 - main - INFO - Environment validation passed
+2025-09-24 09:06:00,040 - ia_assistant - INFO - EventManager initialized
+2025-09-24 09:06:00,040 - ia_assistant - INFO - EventManager initialized
+2025-09-24 09:06:00,041 - ia_assistant - INFO - EnglishAssistantApp initialized
+2025-09-24 09:06:00,041 - ia_assistant - INFO - EnglishAssistantApp initialized
+2025-09-24 09:06:00,041 - ia_assistant - INFO - Starting English Assistant application...
+2025-09-24 09:06:00,041 - ia_assistant - INFO - Starting English Assistant application...
+2025-09-24 09:06:00,042 - ia_assistant - INFO - Initializing application...
+2025-09-24 09:06:00,042 - ia_assistant - INFO - Initializing application...
+2025-09-24 09:06:00,153 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 09:06:00,153 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 09:06:04,266 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 09:06:04,266 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 09:06:04,267 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 09:06:04,267 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 09:06:04,268 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 09:06:04,268 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 09:06:04,269 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 09:06:04,269 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 09:06:08,383 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 09:06:08,383 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 09:06:08,384 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 09:06:08,384 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 09:06:08,384 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 09:06:08,384 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 09:06:08,384 - ia_assistant - INFO - New session created: session_20250924_090608
+2025-09-24 09:06:08,384 - ia_assistant - INFO - New session created: session_20250924_090608
+2025-09-24 09:06:08,385 - ia_assistant - INFO - ChatService initialized
+2025-09-24 09:06:08,385 - ia_assistant - INFO - ChatService initialized
+2025-09-24 09:06:08,385 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 09:06:08,385 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 09:06:12,494 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 09:06:12,494 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 09:06:12,495 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 09:06:12,495 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 09:06:12,495 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 09:06:12,495 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 09:06:12,496 - ia_assistant - INFO - TranslationService initialized
+2025-09-24 09:06:12,496 - ia_assistant - INFO - TranslationService initialized
+2025-09-24 09:06:12,496 - ia_assistant - INFO - Services created successfully
+2025-09-24 09:06:12,496 - ia_assistant - INFO - Services created successfully
+2025-09-24 09:06:12,517 - ia_assistant - ERROR - Failed to create UI components: 'EventManager' object has no attribute 'get'
+2025-09-24 09:06:12,517 - ia_assistant - ERROR - Failed to create UI components: 'EventManager' object has no attribute 'get'
+2025-09-24 09:06:12,517 - ia_assistant - ERROR - Failed to initialize application: 'EventManager' object has no attribute 'get'
+2025-09-24 09:06:12,517 - ia_assistant - ERROR - Failed to initialize application: 'EventManager' object has no attribute 'get'
+2025-09-24 09:06:12,518 - ia_assistant - ERROR - Application error: 'EventManager' object has no attribute 'get'
+2025-09-24 09:06:12,518 - ia_assistant - ERROR - Application error: 'EventManager' object has no attribute 'get'
+2025-09-24 09:06:12,518 - ia_assistant - INFO - Application stopped
+2025-09-24 09:06:12,518 - ia_assistant - INFO - Application stopped
+2025-09-24 09:06:12,519 - main - ERROR - Fatal application error: 'EventManager' object has no attribute 'get'
+2025-09-24 09:06:12,521 - main - ERROR - Traceback: Traceback (most recent call last):
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\main.py", line 72, in main
+    app.run()
+    ~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 360, in run
+    self.initialize()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 65, in initialize
+    self._create_ui_components()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 155, in _create_ui_components
+    chat_frame = self.chat_display.create()
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\components\chat_display.py", line 26, in create
+    self._setup_event_subscriptions()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\components\chat_display.py", line 99, in _setup_event_subscriptions
+    if not self.app_state.get('welcome_shown', False):
+           ^^^^^^^^^^^^^^^^^^
+AttributeError: 'EventManager' object has no attribute 'get'
+
+2025-09-24 09:08:16,064 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-09-24 09:08:16,065 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-09-24 09:08:16,065 - main - INFO - Starting IA English Assistant...
+2025-09-24 09:08:16,066 - main - INFO - Validating environment...
+2025-09-24 09:08:16,231 - main - INFO - Environment validation passed
+2025-09-24 09:08:16,231 - main - INFO - Environment validation passed
+2025-09-24 09:08:16,265 - ia_assistant - INFO - EventManager initialized
+2025-09-24 09:08:16,265 - ia_assistant - INFO - EventManager initialized
+2025-09-24 09:08:16,265 - ia_assistant - INFO - EnglishAssistantApp initialized
+2025-09-24 09:08:16,265 - ia_assistant - INFO - EnglishAssistantApp initialized
+2025-09-24 09:08:16,266 - ia_assistant - INFO - Starting English Assistant application...
+2025-09-24 09:08:16,266 - ia_assistant - INFO - Starting English Assistant application...
+2025-09-24 09:08:16,266 - ia_assistant - INFO - Initializing application...
+2025-09-24 09:08:16,266 - ia_assistant - INFO - Initializing application...
+2025-09-24 09:08:16,375 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 09:08:16,375 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 09:08:20,534 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 09:08:20,534 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 09:08:20,534 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 09:08:20,534 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 09:08:20,535 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 09:08:20,535 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 09:08:20,535 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 09:08:20,535 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 09:08:24,662 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 09:08:24,662 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 09:08:24,662 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 09:08:24,662 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 09:08:24,663 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 09:08:24,663 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 09:08:24,663 - ia_assistant - INFO - New session created: session_20250924_090824
+2025-09-24 09:08:24,663 - ia_assistant - INFO - New session created: session_20250924_090824
+2025-09-24 09:08:24,664 - ia_assistant - INFO - ChatService initialized
+2025-09-24 09:08:24,664 - ia_assistant - INFO - ChatService initialized
+2025-09-24 09:08:24,664 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 09:08:24,664 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 09:08:28,764 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 09:08:28,764 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 09:08:28,764 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 09:08:28,764 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 09:08:28,765 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 09:08:28,765 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 09:08:28,765 - ia_assistant - INFO - TranslationService initialized
+2025-09-24 09:08:28,765 - ia_assistant - INFO - TranslationService initialized
+2025-09-24 09:08:28,766 - ia_assistant - INFO - Services created successfully
+2025-09-24 09:08:28,766 - ia_assistant - INFO - Services created successfully
+2025-09-24 09:08:28,771 - ia_assistant - ERROR - Error subscribing to event: 'EventManager' object has no attribute 'subscribers'
+2025-09-24 09:08:28,771 - ia_assistant - ERROR - Error subscribing to event: 'EventManager' object has no attribute 'subscribers'
+2025-09-24 09:08:28,771 - ia_assistant - ERROR - Error subscribing to event: 'EventManager' object has no attribute 'subscribers'
+2025-09-24 09:08:28,771 - ia_assistant - ERROR - Error subscribing to event: 'EventManager' object has no attribute 'subscribers'
+2025-09-24 09:08:28,772 - ia_assistant - ERROR - Error subscribing to event: 'EventManager' object has no attribute 'subscribers'
+2025-09-24 09:08:28,772 - ia_assistant - ERROR - Error subscribing to event: 'EventManager' object has no attribute 'subscribers'
+2025-09-24 09:08:28,772 - ia_assistant - ERROR - Error subscribing to event: 'EventManager' object has no attribute 'subscribers'
+2025-09-24 09:08:28,772 - ia_assistant - ERROR - Error subscribing to event: 'EventManager' object has no attribute 'subscribers'
+2025-09-24 09:08:28,775 - ia_assistant - ERROR - Error subscribing to event: 'EventManager' object has no attribute 'subscribers'
+2025-09-24 09:08:28,775 - ia_assistant - ERROR - Error subscribing to event: 'EventManager' object has no attribute 'subscribers'
+2025-09-24 09:08:28,776 - ia_assistant - ERROR - Error subscribing to event: 'EventManager' object has no attribute 'subscribers'
+2025-09-24 09:08:28,776 - ia_assistant - ERROR - Error subscribing to event: 'EventManager' object has no attribute 'subscribers'
+2025-09-24 09:08:28,776 - ia_assistant - ERROR - Error subscribing to event: 'EventManager' object has no attribute 'subscribers'
+2025-09-24 09:08:28,776 - ia_assistant - ERROR - Error subscribing to event: 'EventManager' object has no attribute 'subscribers'
+2025-09-24 09:08:28,777 - ia_assistant - ERROR - Error subscribing to event: 'EventManager' object has no attribute 'subscribers'
+2025-09-24 09:08:28,777 - ia_assistant - ERROR - Error subscribing to event: 'EventManager' object has no attribute 'subscribers'
+2025-09-24 09:08:28,777 - ia_assistant - ERROR - Error subscribing to event: 'EventManager' object has no attribute 'subscribers'
+2025-09-24 09:08:28,777 - ia_assistant - ERROR - Error subscribing to event: 'EventManager' object has no attribute 'subscribers'
+2025-09-24 09:08:28,778 - ia_assistant - ERROR - Error subscribing to event: 'EventManager' object has no attribute 'subscribers'
+2025-09-24 09:08:28,778 - ia_assistant - ERROR - Error subscribing to event: 'EventManager' object has no attribute 'subscribers'
+2025-09-24 09:08:28,778 - ia_assistant - ERROR - Error subscribing to event: 'EventManager' object has no attribute 'subscribers'
+2025-09-24 09:08:28,778 - ia_assistant - ERROR - Error subscribing to event: 'EventManager' object has no attribute 'subscribers'
+2025-09-24 09:08:28,814 - ia_assistant - ERROR - Error subscribing to event: 'EventManager' object has no attribute 'subscribers'
+2025-09-24 09:08:28,814 - ia_assistant - ERROR - Error subscribing to event: 'EventManager' object has no attribute 'subscribers'
+2025-09-24 09:08:28,815 - ia_assistant - ERROR - Error subscribing to event: 'EventManager' object has no attribute 'subscribers'
+2025-09-24 09:08:28,815 - ia_assistant - ERROR - Error subscribing to event: 'EventManager' object has no attribute 'subscribers'
+2025-09-24 09:08:28,816 - ia_assistant - ERROR - Error subscribing to event: 'EventManager' object has no attribute 'subscribers'
+2025-09-24 09:08:28,816 - ia_assistant - ERROR - Error subscribing to event: 'EventManager' object has no attribute 'subscribers'
+2025-09-24 09:08:28,816 - ia_assistant - ERROR - Error subscribing to event: 'EventManager' object has no attribute 'subscribers'
+2025-09-24 09:08:28,816 - ia_assistant - ERROR - Error subscribing to event: 'EventManager' object has no attribute 'subscribers'
+2025-09-24 09:08:28,817 - ia_assistant - ERROR - Failed to create UI components: 'FooterComponent' object has no attribute 'subscribe_to_state'
+2025-09-24 09:08:28,817 - ia_assistant - ERROR - Failed to create UI components: 'FooterComponent' object has no attribute 'subscribe_to_state'
+2025-09-24 09:08:28,818 - ia_assistant - ERROR - Failed to initialize application: 'FooterComponent' object has no attribute 'subscribe_to_state'
+2025-09-24 09:08:28,818 - ia_assistant - ERROR - Failed to initialize application: 'FooterComponent' object has no attribute 'subscribe_to_state'
+2025-09-24 09:08:28,818 - ia_assistant - ERROR - Application error: 'FooterComponent' object has no attribute 'subscribe_to_state'
+2025-09-24 09:08:28,818 - ia_assistant - ERROR - Application error: 'FooterComponent' object has no attribute 'subscribe_to_state'
+2025-09-24 09:08:28,818 - ia_assistant - INFO - Application stopped
+2025-09-24 09:08:28,818 - ia_assistant - INFO - Application stopped
+2025-09-24 09:08:28,819 - main - ERROR - Fatal application error: 'FooterComponent' object has no attribute 'subscribe_to_state'
+2025-09-24 09:08:28,822 - main - ERROR - Traceback: Traceback (most recent call last):
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\main.py", line 72, in main
+    app.run()
+    ~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 360, in run
+    self.initialize()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 65, in initialize
+    self._create_ui_components()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 167, in _create_ui_components
+    self.footer = FooterComponent(
+                  ~~~~~~~~~~~~~~~^
+        main_frame, self.colors,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+        self.event_manager, self.app_state
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\components\footer.py", line 23, in __init__
+    self._setup_subscriptions()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\components\footer.py", line 28, in _setup_subscriptions
+    self.subscribe_to_state('messages_sent', self._on_metrics_change)
+    ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'FooterComponent' object has no attribute 'subscribe_to_state'
+
+2025-09-24 09:11:23,197 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-09-24 09:11:23,198 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-09-24 09:11:23,198 - main - INFO - Starting IA English Assistant...
+2025-09-24 09:11:23,198 - main - INFO - Validating environment...
+2025-09-24 09:11:23,362 - main - INFO - Environment validation passed
+2025-09-24 09:11:23,362 - main - INFO - Environment validation passed
+2025-09-24 09:11:23,383 - ia_assistant - INFO - EnglishAssistantApp initialized
+2025-09-24 09:11:23,384 - ia_assistant - INFO - Starting English Assistant application...
+2025-09-24 09:11:23,384 - ia_assistant - INFO - Initializing application...
+2025-09-24 09:11:23,490 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 09:11:27,589 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 09:11:27,589 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 09:11:27,589 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 09:11:27,590 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 09:11:31,703 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 09:11:31,703 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 09:11:31,703 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 09:11:31,703 - ia_assistant - INFO - New session created: session_20250924_091131
+2025-09-24 09:11:31,704 - ia_assistant - INFO - ChatService initialized
+2025-09-24 09:11:31,704 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 09:11:35,779 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 09:11:35,780 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 09:11:35,780 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 09:11:35,780 - ia_assistant - INFO - TranslationService initialized
+2025-09-24 09:11:35,780 - ia_assistant - INFO - Services created successfully
+2025-09-24 09:11:35,812 - ia_assistant - INFO - UI components created successfully
+2025-09-24 09:11:35,814 - ia_assistant - INFO - Application initialized successfully
+2025-09-24 09:12:11,451 - ia_assistant - INFO - Cierre de la aplicación iniciado por el usuario
+2025-09-24 09:12:12,489 - ia_assistant - INFO - Application stopped
+2025-09-24 09:14:54,133 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-09-24 09:14:54,135 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-09-24 09:14:54,135 - main - INFO - Starting IA English Assistant...
+2025-09-24 09:14:54,135 - main - INFO - Validating environment...
+2025-09-24 09:14:54,302 - main - INFO - Environment validation passed
+2025-09-24 09:14:54,302 - main - INFO - Environment validation passed
+2025-09-24 09:14:54,338 - ia_assistant - INFO - EnglishAssistantApp initialized
+2025-09-24 09:14:54,339 - ia_assistant - INFO - Starting English Assistant application...
+2025-09-24 09:14:54,339 - ia_assistant - INFO - Initializing application...
+2025-09-24 09:14:54,449 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 09:14:58,559 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 09:14:58,560 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 09:14:58,560 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 09:14:58,561 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 09:15:02,681 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 09:15:02,681 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 09:15:02,682 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 09:15:02,682 - ia_assistant - INFO - New session created: session_20250924_091502
+2025-09-24 09:15:02,682 - ia_assistant - INFO - ChatService initialized
+2025-09-24 09:15:02,682 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 09:15:06,817 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 09:15:06,817 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 09:15:06,818 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 09:15:06,818 - ia_assistant - INFO - TranslationService initialized
+2025-09-24 09:15:06,818 - ia_assistant - INFO - Services created successfully
+2025-09-24 09:15:07,309 - ia_assistant - INFO - UI components created successfully
+2025-09-24 09:15:07,311 - ia_assistant - INFO - Application initialized successfully
+2025-09-24 09:19:23,639 - ia_assistant - INFO - Cierre de la aplicación iniciado por el usuario
+2025-09-24 09:19:24,693 - ia_assistant - INFO - Application stopped
+2025-09-24 09:19:27,901 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-09-24 09:19:27,902 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-09-24 09:19:27,903 - main - INFO - Starting IA English Assistant...
+2025-09-24 09:19:27,903 - main - INFO - Validating environment...
+2025-09-24 09:19:28,076 - main - INFO - Environment validation passed
+2025-09-24 09:19:28,076 - main - INFO - Environment validation passed
+2025-09-24 09:19:28,120 - ia_assistant - INFO - EnglishAssistantApp initialized
+2025-09-24 09:19:28,120 - ia_assistant - INFO - Starting English Assistant application...
+2025-09-24 09:19:28,120 - ia_assistant - INFO - Initializing application...
+2025-09-24 09:19:28,233 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 09:19:32,320 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 09:19:32,320 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 09:19:32,321 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 09:19:32,321 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 09:19:36,430 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 09:19:36,431 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 09:19:36,431 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 09:19:36,431 - ia_assistant - INFO - New session created: session_20250924_091936
+2025-09-24 09:19:36,432 - ia_assistant - INFO - ChatService initialized
+2025-09-24 09:19:36,432 - ia_assistant - INFO - OllamaService initialized with URL: http://localhost:11434
+2025-09-24 09:19:40,536 - ia_assistant - INFO - Selected model: mistral:latest
+2025-09-24 09:19:40,536 - ia_assistant - INFO - Loaded 2 models
+2025-09-24 09:19:40,536 - ia_assistant - INFO - OllamaService initialized successfully
+2025-09-24 09:19:40,537 - ia_assistant - INFO - TranslationService initialized
+2025-09-24 09:19:40,537 - ia_assistant - INFO - Services created successfully
+2025-09-24 09:19:40,549 - ia_assistant - INFO - UI components created successfully
+2025-09-24 09:19:40,551 - ia_assistant - INFO - Application initialized successfully
+2025-09-24 09:28:45,049 - ia_assistant - INFO - Cierre de la aplicación iniciado por el usuario
+2025-09-24 09:28:46,097 - ia_assistant - INFO - Application stopped
+2025-09-24 09:38:05,588 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-09-24 09:38:05,589 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-09-24 09:38:05,589 - main - INFO - Starting IA English Assistant...
+2025-09-24 09:38:05,590 - main - INFO - Validating environment...
+2025-09-24 09:38:05,748 - main - INFO - Environment validation passed
+2025-09-24 09:38:05,749 - main - INFO - Environment validation passed
+2025-09-24 09:38:05,759 - main - ERROR - Fatal application error: No module named 'core.services'
+2025-09-24 09:38:05,761 - main - ERROR - Traceback: Traceback (most recent call last):
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\main.py", line 68, in main
+    from ui.app import EnglishAssistantApp
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 14, in <module>
+    from core.services.ollama_service import OllamaService  # 🔄 1. FALTABA ESTE
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'core.services'
+
+2025-09-24 09:40:34,331 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-09-24 09:40:34,332 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-09-24 09:40:34,332 - main - INFO - Starting IA English Assistant...
+2025-09-24 09:40:34,333 - main - INFO - Validating environment...
+2025-09-24 09:40:34,516 - main - INFO - Environment validation passed
+2025-09-24 09:40:34,516 - main - INFO - Environment validation passed
+2025-09-24 09:40:34,539 - ia_assistant - INFO - EnglishAssistantApp initialized
+2025-09-24 09:40:34,539 - ia_assistant - INFO - Starting English Assistant application...
+2025-09-24 09:40:34,539 - ia_assistant - INFO - Initializing application...
+2025-09-24 09:40:34,643 - ia_assistant - ERROR - Failed to create services: OllamaService.__init__() missing 1 required positional argument: 'event_manager'
+2025-09-24 09:40:34,644 - ia_assistant - ERROR - Failed to initialize application: OllamaService.__init__() missing 1 required positional argument: 'event_manager'
+2025-09-24 09:40:34,644 - ia_assistant - ERROR - Application error: OllamaService.__init__() missing 1 required positional argument: 'event_manager'
+2025-09-24 09:40:34,644 - ia_assistant - INFO - Application stopped
+2025-09-24 09:40:34,644 - main - ERROR - Fatal application error: OllamaService.__init__() missing 1 required positional argument: 'event_manager'
+2025-09-24 09:40:34,646 - main - ERROR - Traceback: Traceback (most recent call last):
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\main.py", line 72, in main
+    app.run()
+    ~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 360, in run
+    self.initialize()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 64, in initialize
+    self._create_services()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 118, in _create_services
+    self.ollama_service = OllamaService()  # Crear OllamaService primero
+                          ~~~~~~~~~~~~~^^
+TypeError: OllamaService.__init__() missing 1 required positional argument: 'event_manager'
+
+2025-09-24 09:45:49,607 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-09-24 09:45:49,609 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-09-24 09:45:49,609 - main - INFO - Starting IA English Assistant...
+2025-09-24 09:45:49,610 - main - INFO - Validating environment...
+2025-09-24 09:45:49,779 - main - INFO - Environment validation passed
+2025-09-24 09:45:49,780 - main - INFO - Environment validation passed
+2025-09-24 09:45:49,792 - ia_assistant - INFO - EnglishAssistantApp initialized
+2025-09-24 09:45:49,792 - ia_assistant - INFO - Starting English Assistant application...
+2025-09-24 09:45:49,792 - ia_assistant - INFO - Initializing application...
+2025-09-24 09:45:49,895 - ia_assistant - INFO - Creating application services...
+2025-09-24 09:45:49,895 - ia_assistant - INFO - Starting Ollama service (mock mode)
+2025-09-24 09:45:49,896 - ia_assistant - INFO - Application services created successfully
+2025-09-24 09:45:49,901 - ia_assistant - ERROR - Failed to create UI components: 'Config' object has no attribute 'get_font'
+2025-09-24 09:45:49,902 - ia_assistant - ERROR - Failed to initialize application: 'Config' object has no attribute 'get_font'
+2025-09-24 09:45:49,902 - ia_assistant - ERROR - Application error: 'Config' object has no attribute 'get_font'
+2025-09-24 09:45:49,902 - ia_assistant - INFO - Application stopped
+2025-09-24 09:45:49,903 - main - ERROR - Fatal application error: 'Config' object has no attribute 'get_font'
+2025-09-24 09:45:49,906 - main - ERROR - Traceback: Traceback (most recent call last):
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\main.py", line 72, in main
+    app.run()
+    ~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 361, in run
+    self.initialize()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 65, in initialize
+    self._create_ui_components()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 156, in _create_ui_components
+    chat_frame = self.chat_display.create()
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\components\chat_display.py", line 23, in create
+    self._create_chat_area()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\components\chat_display.py", line 42, in _create_chat_area
+    font=config.get_font('text'),
+         ^^^^^^^^^^^^^^^
+AttributeError: 'Config' object has no attribute 'get_font'
+
+2025-09-24 09:56:19,654 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-09-24 09:56:19,654 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-09-24 09:56:19,655 - main - INFO - Starting IA English Assistant...
+2025-09-24 09:56:19,655 - main - INFO - Validating environment...
+2025-09-24 09:56:19,672 - main - INFO - Environment validation passed
+2025-09-24 09:56:19,672 - main - INFO - Environment validation passed
+2025-09-24 09:56:19,684 - main - ERROR - Fatal application error: 'Config' object has no attribute 'get_color_scheme'
+2025-09-24 09:56:19,690 - main - ERROR - Traceback: Traceback (most recent call last):
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\main.py", line 71, in main
+    app = EnglishAssistantApp()
+  File "D:\SISTEMA01 ENTREGA PUESTO\Fabio\IA\ui\app.py", line 35, in __init__
+    self.colors = config.get_color_scheme()
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Config' object has no attribute 'get_color_scheme'
+
+2025-09-24 09:58:48,236 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-09-24 09:58:48,237 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-09-24 09:58:48,238 - main - INFO - Starting IA English Assistant...
+2025-09-24 09:58:48,238 - main - INFO - Validating environment...
+2025-09-24 09:58:48,253 - main - INFO - Environment validation passed
+2025-09-24 09:58:48,253 - main - INFO - Environment validation passed
+2025-09-24 09:58:48,263 - ia_assistant - INFO - EnglishAssistantApp initialized
+2025-09-24 09:58:48,263 - ia_assistant - INFO - Starting English Assistant application...
+2025-09-24 09:58:48,263 - ia_assistant - INFO - Initializing application...
+2025-09-24 09:58:48,367 - ia_assistant - INFO - Creating application services...
+2025-09-24 09:58:48,367 - ia_assistant - INFO - Starting Ollama service (mock mode)
+2025-09-24 09:58:48,368 - ia_assistant - INFO - Application services created successfully
+2025-09-24 09:58:48,389 - ia_assistant - INFO - UI components created successfully
+2025-09-24 09:58:48,389 - ia_assistant - WARNING - Error in status monitor: 'bool' object is not callable
+2025-09-24 09:58:48,389 - ia_assistant - INFO - Application initialized successfully
+2025-09-24 09:58:50,371 - ia_assistant - INFO - Ollama service connected (mock)
+2025-09-24 09:58:53,390 - ia_assistant - WARNING - Error in status monitor: 'bool' object is not callable
+2025-09-24 09:58:58,392 - ia_assistant - WARNING - Error in status monitor: 'bool' object is not callable
+2025-09-24 09:59:03,393 - ia_assistant - WARNING - Error in status monitor: 'bool' object is not callable
+2025-09-24 09:59:08,394 - ia_assistant - WARNING - Error in status monitor: 'bool' object is not callable
+2025-09-24 09:59:13,395 - ia_assistant - WARNING - Error in status monitor: 'bool' object is not callable
+2025-09-24 09:59:18,395 - ia_assistant - WARNING - Error in status monitor: 'bool' object is not callable
+2025-09-24 09:59:23,396 - ia_assistant - WARNING - Error in status monitor: 'bool' object is not callable
+2025-09-24 09:59:28,397 - ia_assistant - WARNING - Error in status monitor: 'bool' object is not callable
+2025-09-24 09:59:33,399 - ia_assistant - WARNING - Error in status monitor: 'bool' object is not callable
+2025-09-24 09:59:38,399 - ia_assistant - WARNING - Error in status monitor: 'bool' object is not callable
+2025-09-24 09:59:43,400 - ia_assistant - WARNING - Error in status monitor: 'bool' object is not callable
+2025-09-24 09:59:48,401 - ia_assistant - WARNING - Error in status monitor: 'bool' object is not callable
+2025-09-24 09:59:53,402 - ia_assistant - WARNING - Error in status monitor: 'bool' object is not callable
+2025-09-24 09:59:58,403 - ia_assistant - WARNING - Error in status monitor: 'bool' object is not callable
+2025-09-24 10:00:03,404 - ia_assistant - WARNING - Error in status monitor: 'bool' object is not callable
+2025-09-24 10:00:08,405 - ia_assistant - WARNING - Error in status monitor: 'bool' object is not callable
+2025-09-24 10:00:13,407 - ia_assistant - WARNING - Error in status monitor: 'bool' object is not callable
+2025-09-24 10:00:18,041 - ia_assistant - INFO - Cierre de la aplicación iniciado por el usuario
+2025-09-24 10:00:18,440 - ia_assistant - INFO - Application stopped
+2025-09-24 10:06:31,166 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-09-24 10:06:31,167 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-09-24 10:06:31,167 - main - INFO - Starting IA English Assistant...
+2025-09-24 10:06:31,168 - main - INFO - Validating environment...
+2025-09-24 10:06:31,184 - main - INFO - Environment validation passed
+2025-09-24 10:06:31,184 - main - INFO - Environment validation passed
+2025-09-24 10:06:31,209 - ia_assistant - INFO - EnglishAssistantApp initialized
+2025-09-24 10:06:31,209 - ia_assistant - INFO - Starting English Assistant application...
+2025-09-24 10:06:31,210 - ia_assistant - INFO - Initializing application...
+2025-09-24 10:06:31,314 - ia_assistant - INFO - Creating application services...
+2025-09-24 10:06:31,315 - ia_assistant - INFO - Starting Ollama service (mock mode)
+2025-09-24 10:06:31,315 - ia_assistant - INFO - Application services created successfully
+2025-09-24 10:06:31,328 - ia_assistant - INFO - UI components created successfully
+2025-09-24 10:06:31,329 - ia_assistant - INFO - Application initialized successfully
+2025-09-24 10:06:33,317 - ia_assistant - INFO - Ollama service connected (mock)
+2025-09-24 10:07:33,998 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-09-24 10:07:34,000 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-09-24 10:07:34,000 - main - INFO - Starting IA English Assistant...
+2025-09-24 10:07:34,001 - main - INFO - Validating environment...
+2025-09-24 10:07:34,016 - main - INFO - Environment validation passed
+2025-09-24 10:07:34,016 - main - INFO - Environment validation passed
+2025-09-24 10:07:34,028 - ia_assistant - INFO - EnglishAssistantApp initialized
+2025-09-24 10:07:34,028 - ia_assistant - INFO - Starting English Assistant application...
+2025-09-24 10:07:34,028 - ia_assistant - INFO - Initializing application...
+2025-09-24 10:07:34,128 - ia_assistant - INFO - Creating application services...
+2025-09-24 10:07:34,128 - ia_assistant - INFO - Starting Ollama service (mock mode)
+2025-09-24 10:07:34,129 - ia_assistant - INFO - Application services created successfully
+2025-09-24 10:07:34,140 - ia_assistant - INFO - UI components created successfully
+2025-09-24 10:07:34,141 - ia_assistant - INFO - Application initialized successfully
+2025-09-24 10:07:36,131 - ia_assistant - INFO - Ollama service connected (mock)
+2025-09-24 10:12:25,764 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-09-24 10:12:25,765 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-09-24 10:12:25,765 - main - INFO - Starting IA English Assistant...
+2025-09-24 10:12:25,765 - main - INFO - Validating environment...
+2025-09-24 10:12:25,782 - main - INFO - Environment validation passed
+2025-09-24 10:12:25,782 - main - INFO - Environment validation passed
+2025-09-24 10:12:25,796 - ia_assistant - INFO - EnglishAssistantApp initialized
+2025-09-24 10:12:25,796 - ia_assistant - INFO - Starting English Assistant application...
+2025-09-24 10:12:25,796 - ia_assistant - INFO - Initializing application...
+2025-09-24 10:12:25,902 - ia_assistant - INFO - Creating application services...
+2025-09-24 10:12:25,902 - ia_assistant - INFO - Starting Ollama service (mock mode)
+2025-09-24 10:12:25,903 - ia_assistant - INFO - Application services created successfully
+2025-09-24 10:12:25,917 - ia_assistant - INFO - UI components created successfully
+2025-09-24 10:12:25,918 - ia_assistant - INFO - Application initialized successfully
+2025-09-24 10:12:27,908 - ia_assistant - INFO - Ollama service connected (mock)
+2025-09-24 10:12:40,613 - ia_assistant - INFO - Processing message: hello, how are you?...
+2025-09-24 10:12:42,125 - ia_assistant - INFO - Message processed successfully
+2025-09-24 10:12:42,128 - ia_assistant - INFO - Processing message: hello, how are you?...
+2025-09-24 10:12:43,642 - ia_assistant - INFO - Message processed successfully
+2025-09-24 10:12:43,654 - ia_assistant - INFO - Processing message: hello, how are you?...
+2025-09-24 10:12:45,174 - ia_assistant - INFO - Message processed successfully
+2025-09-24 10:12:45,178 - ia_assistant - INFO - Processing message: hello, how are you?...
+2025-09-24 10:12:46,692 - ia_assistant - INFO - Message processed successfully
+2025-09-24 10:12:46,711 - ia_assistant - INFO - Processing message: hello, how are you?...
+2025-09-24 10:12:48,234 - ia_assistant - INFO - Message processed successfully
+2025-09-24 10:12:48,245 - ia_assistant - INFO - Processing message: hello, how are you?...
+2025-09-24 10:12:49,757 - ia_assistant - INFO - Message processed successfully
+2025-09-24 10:12:49,783 - ia_assistant - INFO - Processing message: hello, how are you?...
+2025-09-24 10:12:51,294 - ia_assistant - INFO - Message processed successfully
+2025-09-24 10:12:51,319 - ia_assistant - INFO - Processing message: hello, how are you?...
+2025-09-24 10:12:52,827 - ia_assistant - INFO - Message processed successfully
+2025-09-24 10:12:52,852 - ia_assistant - INFO - Processing message: hello, how are you?...
+2025-09-24 10:12:54,370 - ia_assistant - INFO - Message processed successfully
+2025-09-24 10:12:54,387 - ia_assistant - INFO - Processing message: hello, how are you?...
+2025-09-24 10:12:55,910 - ia_assistant - INFO - Message processed successfully
+2025-09-24 10:12:55,919 - ia_assistant - INFO - Processing message: hello, how are you?...
+2025-09-24 10:12:57,433 - ia_assistant - INFO - Message processed successfully
+2025-09-24 10:12:57,467 - ia_assistant - INFO - Processing message: hello, how are you?...
+2025-09-24 10:12:58,985 - ia_assistant - INFO - Message processed successfully
+2025-09-24 10:12:59,018 - ia_assistant - INFO - Processing message: hello, how are you?...
+2025-09-24 10:13:00,521 - ia_assistant - INFO - Message processed successfully
+2025-09-24 10:13:00,542 - ia_assistant - INFO - Processing message: hello, how are you?...
+2025-09-24 10:13:02,054 - ia_assistant - INFO - Message processed successfully
+2025-09-24 10:13:02,089 - ia_assistant - INFO - Processing message: hello, how are you?...
+2025-09-24 10:13:03,598 - ia_assistant - INFO - Message processed successfully
+2025-09-24 10:13:03,605 - ia_assistant - INFO - Processing message: hello, how are you?...
+2025-09-24 10:13:05,114 - ia_assistant - INFO - Message processed successfully
+2025-09-24 10:13:05,140 - ia_assistant - INFO - Processing message: hello, how are you?...
+2025-09-24 10:13:06,653 - ia_assistant - INFO - Message processed successfully
+2025-09-24 10:13:06,666 - ia_assistant - INFO - Processing message: hello, how are you?...
+2025-09-24 10:14:59,240 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-09-24 10:14:59,242 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-09-24 10:14:59,242 - main - INFO - Starting IA English Assistant...
+2025-09-24 10:14:59,242 - main - INFO - Validating environment...
+2025-09-24 10:14:59,258 - main - INFO - Environment validation passed
+2025-09-24 10:14:59,258 - main - INFO - Environment validation passed
+2025-09-24 10:14:59,273 - ia_assistant - INFO - EnglishAssistantApp initialized
+2025-09-24 10:14:59,274 - ia_assistant - INFO - Starting English Assistant application...
+2025-09-24 10:14:59,274 - ia_assistant - INFO - Initializing application...
+2025-09-24 10:14:59,377 - ia_assistant - INFO - Creating application services...
+2025-09-24 10:14:59,378 - ia_assistant - INFO - Starting Ollama service (mock mode)
+2025-09-24 10:14:59,378 - ia_assistant - INFO - Application services created successfully
+2025-09-24 10:14:59,391 - ia_assistant - INFO - UI components created successfully
+2025-09-24 10:14:59,392 - ia_assistant - INFO - Application initialized successfully
+2025-09-24 10:15:01,381 - ia_assistant - INFO - Ollama service connected (mock)
+2025-09-24 10:21:04,064 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-09-24 10:21:04,065 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-09-24 10:21:04,065 - main - INFO - Starting IA English Assistant...
+2025-09-24 10:21:04,065 - main - INFO - Validating environment...
+2025-09-24 10:21:04,080 - main - INFO - Environment validation passed
+2025-09-24 10:21:04,080 - main - INFO - Environment validation passed
+2025-09-24 10:21:04,109 - ia_assistant - INFO - EnglishAssistantApp initialized
+2025-09-24 10:21:04,110 - ia_assistant - INFO - Starting English Assistant application...
+2025-09-24 10:21:04,110 - ia_assistant - INFO - Initializing application...
+2025-09-24 10:21:04,213 - ia_assistant - INFO - Creating application services...
+2025-09-24 10:21:04,213 - ia_assistant - INFO - Starting Ollama service (mock mode)
+2025-09-24 10:21:04,214 - ia_assistant - INFO - Application services created successfully
+2025-09-24 10:21:04,230 - ia_assistant - INFO - UI components created successfully
+2025-09-24 10:21:04,231 - ia_assistant - INFO - Application initialized successfully
+2025-09-24 10:21:06,216 - ia_assistant - INFO - Ollama service connected (mock)
+2025-09-24 10:21:27,753 - ia_assistant.events - ERROR - EVENT LOOP DETECTED! message_sent emitted 11 times. STOPPING.
+2025-09-24 10:21:27,761 - ia_assistant.events - ERROR - EVENT LOOP DETECTED! ui_ready emitted 11 times. STOPPING.
+2025-09-24 10:21:53,455 - ia_assistant - INFO - Cierre de la aplicación iniciado por el usuario
+2025-09-24 10:21:54,274 - ia_assistant - INFO - Application stopped
+2025-09-24 10:25:56,849 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-09-24 10:25:56,850 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-09-24 10:25:56,850 - main - INFO - Starting IA English Assistant
+2025-09-24 10:25:56,866 - main - INFO - Environment validation passed
+2025-09-24 10:25:56,891 - ia_assistant - INFO - Starting Simple English Assistant
+2025-09-24 10:25:56,966 - ia_assistant - INFO - Application started successfully
+2025-09-24 10:25:58,967 - ia_assistant - INFO - Service connected (mock)
+2025-10-01 15:13:06,477 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-01 15:13:06,478 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-01 15:13:06,478 - main - INFO - Starting IA English Assistant
+2025-10-01 15:13:06,555 - main - INFO - Environment validation passed
+2025-10-01 15:13:06,568 - ia_assistant - INFO - Starting Simple English Assistant
+2025-10-01 15:13:07,087 - ia_assistant - INFO - Application started successfully
+2025-10-01 15:13:09,106 - ia_assistant - INFO - Service connected (mock)
+2025-10-01 15:13:15,651 - ia_assistant - INFO - Application closing...
+2025-10-01 15:13:15,678 - ia_assistant - INFO - Application stopped
+2025-10-01 16:06:22,346 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-01 16:06:22,347 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-01 16:06:22,348 - main - INFO - Starting IA English Assistant
+2025-10-01 16:06:22,366 - main - INFO - Environment validation passed
+2025-10-01 16:06:22,408 - ia_assistant - INFO - Starting Simple English Assistant
+2025-10-01 16:06:22,476 - ia_assistant - ERROR - Failed to create components: 'HeaderComponent' object has no attribute 'logger'
+2025-10-01 16:06:22,476 - ia_assistant - ERROR - Application error: 'HeaderComponent' object has no attribute 'logger'
+2025-10-01 16:06:25,548 - ia_assistant - INFO - Application stopped
+2025-10-01 16:06:49,629 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-01 16:06:49,630 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-01 16:06:49,630 - main - INFO - Starting IA English Assistant
+2025-10-01 16:06:49,645 - main - INFO - Environment validation passed
+2025-10-01 16:06:49,660 - ia_assistant - INFO - Starting Simple English Assistant
+2025-10-01 16:06:49,731 - ia_assistant - ERROR - Failed to create components: 'HeaderComponent' object has no attribute 'logger'
+2025-10-01 16:06:49,731 - ia_assistant - ERROR - Application error: 'HeaderComponent' object has no attribute 'logger'
+2025-10-01 16:06:52,664 - ia_assistant - INFO - Application stopped
+2025-10-01 16:07:53,279 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-01 16:07:53,281 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-01 16:07:53,281 - main - INFO - Starting IA English Assistant
+2025-10-01 16:07:53,297 - main - INFO - Environment validation passed
+2025-10-01 16:07:53,341 - ia_assistant - INFO - Starting Simple English Assistant
+2025-10-01 16:07:53,417 - ia_assistant - INFO - Application started successfully
+2025-10-01 16:07:55,418 - ia_assistant - INFO - Service connected (mock)
+2025-10-01 16:07:58,574 - ia_assistant - INFO - Application closing...
+2025-10-01 16:07:58,605 - ia_assistant - INFO - Application stopped
+2025-10-01 16:13:32,294 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-01 16:13:32,295 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-01 16:13:32,295 - main - INFO - Starting IA English Assistant
+2025-10-01 16:13:32,311 - main - INFO - Environment validation passed
+2025-10-01 16:13:32,328 - ia_assistant - INFO - Starting Simple English Assistant
+2025-10-01 16:13:32,406 - ia_assistant - INFO - Application started successfully
+2025-10-01 16:13:34,407 - ia_assistant - INFO - Service connected (mock)
+2025-10-01 16:14:05,577 - ia_assistant - INFO - Application closing...
+2025-10-01 16:14:05,627 - ia_assistant - INFO - Application stopped
+2025-10-01 16:14:45,379 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-01 16:14:45,380 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-01 16:14:45,381 - main - INFO - Starting IA English Assistant
+2025-10-01 16:14:45,396 - main - INFO - Environment validation passed
+2025-10-01 16:14:45,405 - ia_assistant - INFO - Starting Simple English Assistant
+2025-10-01 16:14:45,487 - ia_assistant - INFO - Application started successfully
+2025-10-01 16:14:47,488 - ia_assistant - INFO - Service connected (mock)
+2025-10-01 16:29:08,027 - ia_assistant - INFO - Application stopped
+2025-10-01 16:29:08,028 - main - INFO - Application interrupted by user
+2025-10-01 16:36:17,112 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-01 16:36:17,113 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-01 16:36:17,113 - main - INFO - Starting IA English Assistant
+2025-10-01 16:36:17,132 - main - INFO - Environment validation passed
+2025-10-01 16:36:17,396 - ia_assistant - INFO - Starting Simple English Assistant
+2025-10-01 16:36:17,467 - ia_assistant - ERROR - Failed to create components: 'SimpleInputArea' object has no attribute '_handle_translate'
+2025-10-01 16:36:17,467 - ia_assistant - ERROR - Application error: 'SimpleInputArea' object has no attribute '_handle_translate'
+2025-10-01 16:36:23,096 - ia_assistant - INFO - Application stopped
+2025-10-01 16:36:38,356 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-01 16:36:38,357 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-01 16:36:38,358 - main - INFO - Starting IA English Assistant
+2025-10-01 16:36:38,373 - main - INFO - Environment validation passed
+2025-10-01 16:36:38,562 - ia_assistant - INFO - Starting Simple English Assistant
+2025-10-01 16:36:38,639 - ia_assistant - ERROR - Failed to create components: 'SimpleEnglishAssistantApp' object has no attribute '_handle_translation'
+2025-10-01 16:36:38,639 - ia_assistant - ERROR - Application error: 'SimpleEnglishAssistantApp' object has no attribute '_handle_translation'
+2025-10-01 16:57:23,662 - ia_assistant - INFO - Application closing...
+2025-10-01 16:57:23,686 - ia_assistant - INFO - Application stopped
+2025-10-01 16:57:29,679 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-01 16:57:29,680 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-01 16:57:29,681 - main - INFO - Starting IA English Assistant
+2025-10-01 16:57:29,696 - main - INFO - Environment validation passed
+2025-10-01 16:57:29,872 - ia_assistant - INFO - Starting Simple English Assistant
+2025-10-01 16:57:29,948 - ia_assistant - INFO - Starting Ollama service connection
+2025-10-01 16:57:29,950 - ia_assistant - INFO - Application started successfully
+2025-10-01 16:57:31,951 - ia_assistant - INFO - Service connected (mock)
+2025-10-01 16:57:32,011 - ia_assistant - INFO - Found installed models: ['mistral', 'llama2']
+2025-10-01 16:57:32,407 - ia_assistant - INFO - Ollama connected with model: llama2
+2025-10-01 16:57:54,105 - ia_assistant - INFO - Sending to llama2: Hello, how are you?...
+2025-10-01 16:58:26,471 - ia_assistant - INFO - Response received from llama2
+2025-10-01 16:59:20,436 - ia_assistant - INFO - Sending to llama2: Traduce, porque no te entiendo...
+2025-10-01 16:59:31,034 - ia_assistant - INFO - Response received from llama2
+2025-10-01 17:00:01,520 - ia_assistant - INFO - Sending to llama2: Puedes hablar en español?...
+2025-10-01 17:00:19,398 - ia_assistant - INFO - Response received from llama2
+2025-10-01 17:00:44,308 - ia_assistant - INFO - Application closing...
+2025-10-01 17:00:44,337 - ia_assistant - INFO - Application stopped
+2025-10-01 17:02:15,325 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-01 17:02:15,326 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-01 17:02:15,326 - main - INFO - Starting IA English Assistant
+2025-10-01 17:02:15,341 - main - INFO - Environment validation passed
+2025-10-01 17:02:15,518 - ia_assistant - INFO - Starting Simple English Assistant
+2025-10-01 17:02:15,609 - ia_assistant - INFO - Starting Ollama service connection
+2025-10-01 17:02:15,611 - ia_assistant - INFO - Application started successfully
+2025-10-01 17:02:17,612 - ia_assistant - INFO - Service connected (mock)
+2025-10-01 17:02:17,679 - ia_assistant - INFO - Found installed models: ['mistral', 'llama2']
+2025-10-01 17:02:18,047 - ia_assistant - INFO - Ollama connected with model: llama2
+2025-10-01 17:02:21,560 - ia_assistant - INFO - Application closing...
+2025-10-01 17:02:21,589 - ia_assistant - INFO - Application stopped
+2025-10-01 17:03:11,554 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-01 17:03:11,555 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-01 17:03:11,555 - main - INFO - Starting IA English Assistant
+2025-10-01 17:03:11,570 - main - INFO - Environment validation passed
+2025-10-01 17:03:11,740 - ia_assistant - INFO - Starting Simple English Assistant
+2025-10-01 17:03:11,838 - ia_assistant - ERROR - Failed to create components: 'FooterComponent' object has no attribute '_update_metrics'
+2025-10-01 17:03:11,839 - ia_assistant - ERROR - Application error: 'FooterComponent' object has no attribute '_update_metrics'
+2025-10-01 17:03:14,615 - ia_assistant - INFO - Application stopped
+2025-10-01 17:04:33,977 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-01 17:04:33,978 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-01 17:04:33,978 - main - INFO - Starting IA English Assistant
+2025-10-01 17:04:33,993 - main - INFO - Environment validation passed
+2025-10-01 17:04:34,172 - ia_assistant - INFO - Starting Simple English Assistant
+2025-10-01 17:04:34,247 - ia_assistant - INFO - Starting Ollama service connection
+2025-10-01 17:04:34,248 - ia_assistant - INFO - Application started successfully
+2025-10-01 17:04:36,249 - ia_assistant - INFO - Service connected (mock)
+2025-10-01 17:04:36,308 - ia_assistant - INFO - Found installed models: ['mistral', 'llama2']
+2025-10-01 17:04:36,685 - ia_assistant - INFO - Ollama connected with model: llama2
+2025-10-01 17:04:42,914 - ia_assistant - INFO - Application closing...
+2025-10-01 17:04:42,941 - ia_assistant - INFO - Application stopped
+2025-10-01 17:08:13,868 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-01 17:08:13,869 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-01 17:08:13,869 - main - INFO - Starting IA English Assistant
+2025-10-01 17:08:13,885 - main - INFO - Environment validation passed
+2025-10-01 17:08:14,056 - ia_assistant - INFO - Starting Simple English Assistant
+2025-10-01 17:08:14,147 - ia_assistant - INFO - Starting Ollama service connection
+2025-10-01 17:08:14,149 - ia_assistant - INFO - Application started successfully
+2025-10-01 17:08:16,149 - ia_assistant - INFO - Service connected (mock)
+2025-10-01 17:08:16,218 - ia_assistant - INFO - Found installed models: ['mistral', 'llama2']
+2025-10-01 17:08:16,593 - ia_assistant - INFO - Ollama connected with model: llama2
+2025-10-01 17:08:34,586 - ia_assistant - INFO - Application closing...
+2025-10-01 17:08:34,614 - ia_assistant - INFO - Application stopped
+2025-10-02 11:30:08,981 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-02 11:30:08,983 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-02 11:30:08,983 - main - INFO - Starting IA English Assistant
+2025-10-02 11:30:09,052 - main - INFO - Environment validation passed
+2025-10-02 11:30:09,453 - ia_assistant - INFO - Starting Simple English Assistant
+2025-10-02 11:30:09,915 - ia_assistant - INFO - Starting Ollama service connection
+2025-10-02 11:30:09,917 - ia_assistant - INFO - Application started successfully
+2025-10-02 11:30:11,918 - ia_assistant - INFO - Service connected (mock)
+2025-10-02 11:30:12,013 - ia_assistant - INFO - Found installed models: ['mistral', 'llama2']
+2025-10-02 11:30:12,507 - ia_assistant - INFO - Ollama connected with model: llama2
+2025-10-02 11:30:14,921 - ia_assistant - INFO - Application closing...
+2025-10-02 11:30:14,948 - ia_assistant - INFO - Application stopped
+2025-10-02 11:39:25,145 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-02 11:39:25,146 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-02 11:39:25,146 - main - INFO - Starting IA English Assistant
+2025-10-02 11:39:25,161 - main - INFO - Environment validation passed
+2025-10-02 11:39:25,317 - ia_assistant - INFO - Starting Simple English Assistant
+2025-10-02 11:39:25,404 - ia_assistant - INFO - Starting Ollama service connection
+2025-10-02 11:39:25,406 - ia_assistant - INFO - Application started successfully
+2025-10-02 11:39:27,407 - ia_assistant - INFO - Service connected (mock)
+2025-10-02 11:39:27,448 - ia_assistant - INFO - Found installed models: ['mistral', 'llama2']
+2025-10-02 11:39:27,889 - ia_assistant - INFO - Ollama connected with model: llama2
+2025-10-02 11:39:31,887 - ia_assistant - INFO - Application closing...
+2025-10-02 11:39:31,921 - ia_assistant - INFO - Application stopped
+2025-10-02 14:13:12,236 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-02 14:13:12,237 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-02 14:13:12,237 - main - INFO - Starting IA English Assistant
+2025-10-02 14:13:12,254 - main - INFO - Environment validation passed
+2025-10-02 14:13:12,435 - ia_assistant - INFO - Starting Simple English Assistant
+2025-10-02 14:13:12,521 - ia_assistant - INFO - Starting Ollama service connection
+2025-10-02 14:13:12,522 - ia_assistant - INFO - Application started successfully
+2025-10-02 14:13:14,523 - ia_assistant - INFO - Service connected (mock)
+2025-10-02 14:13:14,587 - ia_assistant - INFO - Found installed models: ['mistral', 'llama2']
+2025-10-02 14:13:15,069 - ia_assistant - INFO - Ollama connected with model: llama2
+2025-10-02 14:25:50,282 - ia_assistant - INFO - Application closing...
+2025-10-02 14:25:50,306 - ia_assistant - INFO - Application stopped
+2025-10-09 08:52:55,733 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-09 08:52:55,734 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-09 08:52:55,734 - main - INFO - Starting IA English Assistant
+2025-10-09 08:52:55,804 - main - INFO - Environment validation passed
+2025-10-09 08:52:56,160 - ia_assistant - INFO - Starting Simple English Assistant
+2025-10-09 08:52:56,645 - ia_assistant - INFO - Starting Ollama service connection
+2025-10-09 08:52:56,646 - ia_assistant - INFO - Application started successfully
+2025-10-09 08:52:58,647 - ia_assistant - INFO - Service connected (mock)
+2025-10-09 08:52:58,725 - ia_assistant - INFO - Found installed models: ['mistral', 'llama2']
+2025-10-09 08:52:59,236 - ia_assistant - INFO - Ollama connected with model: llama2
+2025-10-09 08:53:20,153 - ia_assistant - INFO - Sending to llama2: Hola, como estas?...
+2025-10-09 08:53:59,882 - ia_assistant - INFO - Response received from llama2
+2025-10-09 09:04:38,872 - ia_assistant - INFO - Application closing...
+2025-10-09 09:04:38,908 - ia_assistant - INFO - Application stopped
+2025-10-09 09:04:48,486 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-09 09:04:48,487 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-09 09:04:48,487 - main - INFO - Starting IA English Assistant
+2025-10-09 09:04:48,503 - main - INFO - Environment validation passed
+2025-10-09 09:04:48,682 - ia_assistant - INFO - Starting Simple English Assistant
+2025-10-09 09:04:48,771 - ia_assistant - INFO - Starting Ollama service connection
+2025-10-09 09:04:48,774 - ia_assistant - INFO - Application started successfully
+2025-10-09 09:04:50,774 - ia_assistant - INFO - Service connected (mock)
+2025-10-09 09:04:50,836 - ia_assistant - INFO - Found installed models: ['mistral', 'llama2']
+2025-10-09 09:04:51,355 - ia_assistant - INFO - Ollama connected with model: llama2
+2025-10-09 09:05:20,631 - ia_assistant - INFO - Sending to llama2: Hola, como estas?...
+2025-10-09 09:06:22,727 - ia_assistant - ERROR - Ollama request timed out (60s)
+2025-10-09 09:06:22,728 - ia_assistant - ERROR - Error processing with llama2: No response from Ollama
+2025-10-09 09:08:53,970 - ia_assistant - INFO - Application closing...
+2025-10-09 09:08:54,001 - ia_assistant - INFO - Application stopped
+2025-10-09 09:08:59,502 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-09 09:08:59,503 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-09 09:08:59,504 - main - INFO - Starting IA English Assistant
+2025-10-09 09:08:59,520 - main - INFO - Environment validation passed
+2025-10-09 09:08:59,703 - ia_assistant - INFO - Starting Simple English Assistant
+2025-10-09 09:08:59,790 - ia_assistant - INFO - Starting Ollama service connection
+2025-10-09 09:08:59,792 - ia_assistant - INFO - Application started successfully
+2025-10-09 09:09:01,793 - ia_assistant - INFO - Service connected (mock)
+2025-10-09 09:09:01,869 - ia_assistant - INFO - Found installed models: ['mistral', 'llama2']
+2025-10-09 09:09:02,318 - ia_assistant - INFO - Ollama connected with model: llama2
+2025-10-09 09:10:33,320 - ia_assistant - INFO - Application closing...
+2025-10-09 09:10:33,352 - ia_assistant - INFO - Application stopped
+2025-10-09 09:10:37,538 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-09 09:10:37,539 - logging_setup - INFO - Logging initialized - Level: INFO
+2025-10-09 09:10:37,539 - main - INFO - Starting IA English Assistant
+2025-10-09 09:10:37,554 - main - INFO - Environment validation passed
+2025-10-09 09:10:37,735 - ia_assistant - INFO - Starting Simple English Assistant
+2025-10-09 09:10:37,825 - ia_assistant - INFO - Starting Ollama service connection
+2025-10-09 09:10:37,827 - ia_assistant - INFO - Application started successfully
+2025-10-09 09:10:39,827 - ia_assistant - INFO - Service connected (mock)
+2025-10-09 09:10:39,899 - ia_assistant - INFO - Found installed models: ['mistral', 'llama2']
+2025-10-09 09:10:40,354 - ia_assistant - INFO - Ollama connected with model: llama2
+2025-10-09 09:11:12,173 - ia_assistant - INFO - Sending to llama2: Hola, quiero aprender el presente continuo en ingl...
+2025-10-09 09:12:08,273 - ia_assistant - INFO - Response received from llama2
+2025-10-09 09:13:19,371 - ia_assistant - INFO - Application closing...
+2025-10-09 09:13:19,412 - ia_assistant - INFO - Application stopped
